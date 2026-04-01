@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vane Labs — Ad-Tech & Growth</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue: #1a6fd4;
+      --blue-bright: #3a8ff0;
+      --gold: #c8a84b;
+      --gold-light: #e8cb78;
+      --bg: #06080f;
+      --surface: #0d1120;
+      --surface2: #141828;
+      --border: rgba(255,255,255,0.07);
+      --text: #eef0f8;
+      --muted: rgba(238,240,248,0.45);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 64px;
+      transition: background .4s, padding .4s, box-shadow .4s;
+    }
+
+    nav.scrolled {
+      background: rgba(6,8,15,0.92);
+      backdrop-filter: blur(20px);
+      padding: 14px 64px;
+      box-shadow: 0 1px 0 var(--border);
+    }
+
+    .nav-logo { display: flex; align-items: center; gap: 12px; cursor: pointer; }
+    .logo-svg { width: 42px; height: 42px; }
+
+    .nav-wordmark {
+      font-size: 17px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      color: var(--text);
+    }
+    .nav-wordmark em { color: var(--blue-bright); font-style: normal; }
+
+    .nav-links { display: flex; gap: 40px; }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 13.5px;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    .nav-cta {
+      background: var(--blue);
+      color: #fff;
+      padding: 10px 24px;
+      border-radius: 6px;
+      font-size: 13.5px;
+      font-weight: 700;
+      text-decoration: none;
+      letter-spacing: 0.03em;
+      transition: background .2s, transform .15s, box-shadow .2s;
+      box-shadow: 0 0 0 0 rgba(26,111,212,0);
+    }
+    .nav-cta:hover {
+      background: var(--blue-bright);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 24px rgba(26,111,212,0.4);
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 140px 64px 100px;
+      overflow: hidden;
+    }
+
+    /* Animated gradient mesh bg */
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: var(--bg);
+      z-index: 0;
+    }
+
+    .hero-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      pointer-events: none;
+    }
+
+    .orb1 {
+      width: 700px; height: 700px;
+      background: radial-gradient(circle, rgba(26,111,212,0.18) 0%, transparent 70%);
+      top: -200px; right: -100px;
+      animation: orbFloat1 12s ease-in-out infinite;
+    }
+    .orb2 {
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(200,168,75,0.1) 0%, transparent 70%);
+      bottom: -100px; left: 5%;
+      animation: orbFloat2 15s ease-in-out infinite;
+    }
+    .orb3 {
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(58,143,240,0.12) 0%, transparent 70%);
+      top: 40%; left: 40%;
+      animation: orbFloat3 10s ease-in-out infinite;
+    }
+
+    @keyframes orbFloat1 {
+      0%, 100% { transform: translate(0,0) scale(1); }
+      50% { transform: translate(-60px, 40px) scale(1.1); }
+    }
+    @keyframes orbFloat2 {
+      0%, 100% { transform: translate(0,0) scale(1); }
+      50% { transform: translate(40px, -60px) scale(1.08); }
+    }
+    @keyframes orbFloat3 {
+      0%, 100% { transform: translate(0,0) scale(1); }
+      33% { transform: translate(30px, -30px) scale(1.05); }
+      66% { transform: translate(-20px, 20px) scale(0.95); }
+    }
+
+    /* Grid lines */
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 80px 80px;
+      mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, black 30%, transparent 100%);
+      z-index: 0;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 760px;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(26,111,212,0.12);
+      color: var(--blue-bright);
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 6px 18px;
+      border-radius: 100px;
+      margin-bottom: 32px;
+      border: 1px solid rgba(26,111,212,0.3);
+      opacity: 0;
+      animation: fadeUp .8s .2s forwards;
+    }
+
+    .pulse-dot {
+      width: 8px; height: 8px;
+      background: var(--blue-bright);
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.7); }
+    }
+
+    .hero h1 {
+      font-size: clamp(44px, 5.5vw, 78px);
+      font-weight: 900;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      margin-bottom: 32px;
+      opacity: 0;
+      animation: fadeUp .8s .4s forwards;
+    }
+
+    .hero h1 .blue {
+      background: linear-gradient(90deg, var(--blue-bright), #60b0ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero h1 .gold {
+      background: linear-gradient(90deg, var(--gold-light), var(--gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 560px;
+      line-height: 1.8;
+      margin-bottom: 52px;
+      opacity: 0;
+      animation: fadeUp .8s .6s forwards;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp .8s .8s forwards;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--blue) 0%, var(--blue-bright) 100%);
+      color: #fff;
+      padding: 16px 36px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 15px;
+      text-decoration: none;
+      transition: transform .2s, box-shadow .2s;
+      display: inline-block;
+      box-shadow: 0 4px 20px rgba(26,111,212,0.3);
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(26,111,212,0.5);
+    }
+
+    .btn-ghost {
+      border: 1px solid rgba(255,255,255,0.15);
+      color: var(--muted);
+      padding: 16px 36px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 15px;
+      text-decoration: none;
+      transition: border-color .2s, color .2s, background .2s;
+      display: inline-block;
+    }
+    .btn-ghost:hover {
+      border-color: var(--blue);
+      color: var(--text);
+      background: rgba(26,111,212,0.08);
+    }
+
+    /* Scroll indicator */
+    .scroll-hint {
+      position: absolute;
+      bottom: 40px;
+      left: 64px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      opacity: 0;
+      animation: fadeUp .8s 1.2s forwards;
+    }
+
+    .scroll-line {
+      width: 40px;
+      height: 1px;
+      background: var(--muted);
+      position: relative;
+      overflow: hidden;
+    }
+    .scroll-line::after {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: var(--blue-bright);
+      animation: scrollLine 2s 1.5s ease-in-out infinite;
+    }
+    @keyframes scrollLine {
+      0% { left: -100%; }
+      50%, 100% { left: 100%; }
+    }
+
+    /* ─── TICKER ─── */
+    .ticker {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 0;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .ticker-track {
+      display: flex;
+      gap: 0;
+      white-space: nowrap;
+      animation: ticker 30s linear infinite;
+    }
+
+    .ticker-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 24px;
+      padding: 0 40px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .ticker-item .dot {
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+
+    @keyframes ticker {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ─── SECTIONS ─── */
+    .section { padding: 110px 64px; }
+
+    .section-label {
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--blue-bright);
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-size: clamp(32px, 3.5vw, 52px);
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 1.12;
+      margin-bottom: 20px;
+    }
+
+    .section-sub {
+      font-size: 17px;
+      color: var(--muted);
+      max-width: 500px;
+      line-height: 1.75;
+      margin-bottom: 64px;
+    }
+
+    /* ─── SERVICES ─── */
+    .services-section { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      background: var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .svc-card {
+      background: var(--surface);
+      padding: 48px 36px;
+      position: relative;
+      overflow: hidden;
+      transition: background .3s;
+    }
+
+    .svc-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--blue), var(--blue-bright));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .4s ease;
+    }
+    .svc-card:hover::before { transform: scaleX(1); }
+    .svc-card:hover { background: var(--surface2); }
+
+    .svc-number {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      color: var(--blue-bright);
+      opacity: 0.5;
+      margin-bottom: 20px;
+    }
+
+    .svc-icon {
+      font-size: 28px;
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .svc-card h3 {
+      font-size: 19px;
+      font-weight: 700;
+      margin-bottom: 14px;
+      line-height: 1.3;
+    }
+
+    .svc-card p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    .svc-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .svc-list li {
+      font-size: 13px;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .svc-list li::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+
+    /* ─── THREE COLUMNS ─── */
+    .pillars-section { padding: 110px 64px; }
+
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      background: var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+      margin-top: 64px;
+    }
+
+    .pillar {
+      background: var(--surface);
+      padding: 56px 40px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      transition: background .3s;
+    }
+
+    .pillar:hover { background: var(--surface2); }
+
+    .pillar-icon-wrap {
+      width: 72px; height: 72px;
+      margin: 0 auto 28px;
+      position: relative;
+    }
+
+    .pillar-icon-bg {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background: rgba(26,111,212,0.12);
+      border: 1px solid rgba(26,111,212,0.2);
+      transition: background .3s, transform .3s;
+    }
+    .pillar:hover .pillar-icon-bg {
+      background: rgba(26,111,212,0.2);
+      transform: scale(1.1);
+    }
+
+    .pillar-icon {
+      position: relative;
+      z-index: 1;
+      font-size: 28px;
+      line-height: 72px;
+    }
+
+    .pillar h3 {
+      font-size: 22px;
+      font-weight: 800;
+      margin-bottom: 16px;
+      letter-spacing: -0.01em;
+    }
+
+    .pillar p {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.75;
+      margin-bottom: 28px;
+    }
+
+    .pillar-link {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--blue-bright);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: gap .2s;
+    }
+    .pillar-link:hover { gap: 10px; }
+
+    /* ─── STATS ─── */
+    .stats-section {
+      padding: 80px 64px;
+      background: linear-gradient(135deg, rgba(26,111,212,0.08) 0%, transparent 60%);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 40px;
+      text-align: center;
+    }
+
+    .stat-num {
+      font-size: 52px;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      display: block;
+      background: linear-gradient(135deg, var(--blue-bright), var(--gold-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .stat-label {
+      font-size: 12px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-top: 6px;
+    }
+
+    /* ─── CONTACT ─── */
+    .contact-section {
+      padding: 110px 64px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-section::before {
+      content: '';
+      position: absolute;
+      top: -200px; right: -200px;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(200,168,75,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .contact-inner {
+      max-width: 680px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .contact-form {
+      margin-top: 48px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 52px;
+      text-align: left;
+    }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+    .form-group { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
+    .form-group label { font-size: 12.5px; font-weight: 600; color: var(--muted); letter-spacing: 0.04em; }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 13px 16px;
+      color: var(--text);
+      font-size: 15px;
+      font-family: inherit;
+      transition: border-color .25s, background .25s, box-shadow .25s;
+      outline: none;
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: rgba(238,240,248,0.2); }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--blue);
+      background: rgba(26,111,212,0.06);
+      box-shadow: 0 0 0 3px rgba(26,111,212,0.12);
+    }
+
+    .form-group select option { background: #0d1120; }
+    .form-group textarea { resize: vertical; min-height: 120px; }
+
+    .form-submit {
+      width: 100%;
+      background: linear-gradient(135deg, var(--blue) 0%, var(--blue-bright) 100%);
+      color: #fff;
+      border: none;
+      padding: 16px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform .2s, box-shadow .2s;
+      margin-top: 8px;
+      font-family: inherit;
+      letter-spacing: 0.02em;
+      box-shadow: 0 4px 20px rgba(26,111,212,0.3);
+    }
+    .form-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(26,111,212,0.5);
+    }
+
+    .form-note {
+      text-align: center;
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 20px;
+    }
+    .form-note a { color: var(--gold-light); text-decoration: none; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: #030508;
+      border-top: 1px solid var(--border);
+      padding: 48px 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+
+    .footer-logo { display: flex; align-items: center; gap: 10px; }
+    .footer-wordmark { font-size: 14px; font-weight: 800; color: var(--text); letter-spacing: 0.06em; }
+    .footer-wordmark em { color: var(--blue-bright); font-style: normal; }
+
+    footer p { font-size: 13px; color: rgba(238,240,248,0.25); }
+    footer a { color: rgba(238,240,248,0.25); text-decoration: none; transition: color .2s; }
+    footer a:hover { color: var(--gold-light); }
+
+    /* ─── SCROLL ANIMATIONS ─── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(36px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: .1s; }
+    .reveal-delay-2 { transition-delay: .2s; }
+    .reveal-delay-3 { transition-delay: .3s; }
+    .reveal-delay-4 { transition-delay: .4s; }
+    .reveal-delay-5 { transition-delay: .5s; }
+    .reveal-delay-6 { transition-delay: .6s; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      nav { padding: 16px 24px; }
+      nav.scrolled { padding: 12px 24px; }
+      .nav-links { display: none; }
+      .hero { padding: 100px 24px 80px; }
+      .scroll-hint { left: 24px; }
+      .section, .pillars-section, .contact-section { padding: 70px 24px; }
+      .stats-section { padding: 60px 24px; }
+      .services-grid, .pillars-grid { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
+      .form-row { grid-template-columns: 1fr; }
+      .contact-form { padding: 32px 24px; }
+      footer { padding: 32px 24px; flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <div class="nav-logo" onclick="scrollTo({top:0,behavior:'smooth'})">
+      <svg class="logo-svg" viewBox="0 0 100 100" fill="none">
+        <defs>
+          <linearGradient id="bg1" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#5aaff0"/>
+            <stop offset="50%" stop-color="#1a6fd4"/>
+            <stop offset="100%" stop-color="#0b3d8a"/>
+          </linearGradient>
+          <linearGradient id="bg2" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#f0d878"/>
+            <stop offset="50%" stop-color="#c8a84b"/>
+            <stop offset="100%" stop-color="#8a6010"/>
+          </linearGradient>
+          <filter id="bs"><feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.35"/></filter>
+        </defs>
+        <path d="M 10 52 L 36 78 L 90 16" stroke="url(#bg1)" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <line x1="14" y1="72" x2="38" y2="46" stroke="url(#bg2)" stroke-width="5.5" stroke-linecap="round" filter="url(#bs)"/>
+        <circle cx="14" cy="72" r="9.5" fill="url(#bg2)" filter="url(#bs)"/>
+        <circle cx="38" cy="46" r="9.5" fill="url(#bg2)" filter="url(#bs)"/>
+        <circle cx="11" cy="67" r="3.5" fill="rgba(255,255,255,0.5)"/>
+        <circle cx="35" cy="41" r="3.5" fill="rgba(255,255,255,0.5)"/>
+      </svg>
+      <span class="nav-wordmark"><em>VANE</em> LABS</span>
+    </div>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#pillars">Approach</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a href="#contact" class="nav-cta">Get Started</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg">
+      <div class="hero-grid"></div>
+      <div class="hero-orb orb1"></div>
+      <div class="hero-orb orb2"></div>
+      <div class="hero-orb orb3"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">
+        <div class="pulse-dot"></div>
+        Product Innovation Meets Programmatic Scale
+      </div>
+      <h1>Where <span class="blue">Ad-Tech</span><br/>meets <span class="gold">opportunity</span></h1>
+      <p>
+        Vane Labs bridges brands, publishers, and technology to unlock new revenue streams, sharpen monetization strategy, and build the connections that drive sustainable growth.
+      </p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary">Get in Touch</a>
+        <a href="#services" class="btn-ghost">Explore Services</a>
+      </div>
+    </div>
+    <div class="scroll-hint">
+      <div class="scroll-line"></div>
+      Scroll to explore
+    </div>
+  </section>
+
+  <!-- TICKER -->
+  <div class="ticker">
+    <div class="ticker-track">
+      <!-- doubled for seamless loop -->
+      <span class="ticker-item"><span class="dot"></span>Ad-Tech Strategy</span>
+      <span class="ticker-item"><span class="dot"></span>Programmatic Monetization</span>
+      <span class="ticker-item"><span class="dot"></span>Supply Path Optimisation</span>
+      <span class="ticker-item"><span class="dot"></span>DSP & SSP Connections</span>
+      <span class="ticker-item"><span class="dot"></span>Product Manifestation</span>
+      <span class="ticker-item"><span class="dot"></span>Revenue Strategy</span>
+      <span class="ticker-item"><span class="dot"></span>Ad Exchange Consulting</span>
+      <span class="ticker-item"><span class="dot"></span>Business Opportunities</span>
+      <span class="ticker-item"><span class="dot"></span>Ad-Tech Strategy</span>
+      <span class="ticker-item"><span class="dot"></span>Programmatic Monetization</span>
+      <span class="ticker-item"><span class="dot"></span>Supply Path Optimisation</span>
+      <span class="ticker-item"><span class="dot"></span>DSP & SSP Connections</span>
+      <span class="ticker-item"><span class="dot"></span>Product Manifestation</span>
+      <span class="ticker-item"><span class="dot"></span>Revenue Strategy</span>
+      <span class="ticker-item"><span class="dot"></span>Ad Exchange Consulting</span>
+      <span class="ticker-item"><span class="dot"></span>Business Opportunities</span>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats-section">
+    <div class="stats-grid">
+      <div class="reveal">
+        <span class="stat-num" data-target="2">0</span><span class="stat-num" style="font-size:30px;">B+</span>
+        <div class="stat-label">Media Managed</div>
+      </div>
+      <div class="reveal reveal-delay-1">
+        <span class="stat-num" data-target="150">0</span><span class="stat-num" style="font-size:30px;">+</span>
+        <div class="stat-label">Brand Connections</div>
+      </div>
+      <div class="reveal reveal-delay-2">
+        <span class="stat-num" data-target="40">0</span><span class="stat-num" style="font-size:30px;">+</span>
+        <div class="stat-label">Markets Activated</div>
+      </div>
+      <div class="reveal reveal-delay-3">
+        <span class="stat-num" data-target="10">0</span><span class="stat-num" style="font-size:30px;">×</span>
+        <div class="stat-label">Avg. Revenue Lift</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section class="section services-section" id="services">
+    <div class="section-label reveal">What We Do</div>
+    <h2 class="section-title reveal reveal-delay-1">Built for the modern<br/>ad-tech ecosystem</h2>
+    <p class="section-sub reveal reveal-delay-2">From strategy to execution — we find, grow, and monetize your most valuable opportunities.</p>
+
+    <div class="services-grid">
+      <div class="svc-card reveal reveal-delay-1">
+        <div class="svc-number">01</div>
+        <span class="svc-icon">📡</span>
+        <h3>Ad-Tech Strategy</h3>
+        <p>Programmatic architecture, supply-path optimisation, and demand curation built for your specific inventory.</p>
+        <ul class="svc-list">
+          <li>Supply path optimisation</li>
+          <li>Demand curation</li>
+          <li>Header bidding setup</li>
+          <li>Stack audits</li>
+        </ul>
+      </div>
+      <div class="svc-card reveal reveal-delay-2">
+        <div class="svc-number">02</div>
+        <span class="svc-icon">💰</span>
+        <h3>Monetization</h3>
+        <p>We audit your stack, close yield gaps, and build revenue models aligned with your audience and inventory.</p>
+        <ul class="svc-list">
+          <li>Revenue model design</li>
+          <li>Yield optimisation</li>
+          <li>Floor price strategy</li>
+          <li>Direct deal enablement</li>
+        </ul>
+      </div>
+      <div class="svc-card reveal reveal-delay-3">
+        <div class="svc-number">03</div>
+        <span class="svc-icon">🔗</span>
+        <h3>Connections</h3>
+        <p>A deep network of DSPs, SSPs, agencies, and direct advertisers — activated on your behalf.</p>
+        <ul class="svc-list">
+          <li>DSP & SSP introductions</li>
+          <li>Agency partnerships</li>
+          <li>Direct advertiser deals</li>
+          <li>Industry positioning</li>
+        </ul>
+      </div>
+      <div class="svc-card reveal reveal-delay-1">
+        <div class="svc-number">04</div>
+        <span class="svc-icon">🚀</span>
+        <h3>Product Manifestation</h3>
+        <p>From concept to market — we take ad-tech ideas through spec, build, and GTM at pace.</p>
+        <ul class="svc-list">
+          <li>Product scoping</li>
+          <li>GTM strategy</li>
+          <li>Launch execution</li>
+          <li>Market positioning</li>
+        </ul>
+      </div>
+      <div class="svc-card reveal reveal-delay-2">
+        <div class="svc-number">05</div>
+        <span class="svc-icon">🎯</span>
+        <h3>Business Opportunities</h3>
+        <p>We surface the white spaces, emerging channels, and structures others miss — then help you move first.</p>
+        <ul class="svc-list">
+          <li>Market opportunity mapping</li>
+          <li>Competitive intelligence</li>
+          <li>Deal structuring</li>
+          <li>Commercial growth</li>
+        </ul>
+      </div>
+      <div class="svc-card reveal reveal-delay-3">
+        <div class="svc-number">06</div>
+        <span class="svc-icon">🧭</span>
+        <h3>Consultancy</h3>
+        <p>Senior ad-tech expertise embedded into your team — without the overhead of a full-time hire.</p>
+        <ul class="svc-list">
+          <li>Fractional leadership</li>
+          <li>Advisory retainers</li>
+          <li>Project-based engagements</li>
+          <li>Team upskilling</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- PILLARS -->
+  <section class="pillars-section" id="pillars">
+    <div class="section-label reveal">Our Approach</div>
+    <h2 class="section-title reveal reveal-delay-1">Three ways we move<br/>the needle</h2>
+
+    <div class="pillars-grid">
+      <div class="pillar reveal reveal-delay-1">
+        <div class="pillar-icon-wrap">
+          <div class="pillar-icon-bg"></div>
+          <div class="pillar-icon">🔧</div>
+        </div>
+        <h3>We Build</h3>
+        <p>Ad-tech products that go from concept to market without getting lost in development cycles. Real products, real timelines.</p>
+        <a href="#contact" class="pillar-link">Start a project →</a>
+      </div>
+      <div class="pillar reveal reveal-delay-2">
+        <div class="pillar-icon-wrap">
+          <div class="pillar-icon-bg"></div>
+          <div class="pillar-icon">📈</div>
+        </div>
+        <h3>We Monetize</h3>
+        <p>Finding and unlocking revenue that already exists in your inventory, audience, and technology stack.</p>
+        <a href="#contact" class="pillar-link">Grow revenue →</a>
+      </div>
+      <div class="pillar reveal reveal-delay-3">
+        <div class="pillar-icon-wrap">
+          <div class="pillar-icon-bg"></div>
+          <div class="pillar-icon">🌐</div>
+        </div>
+        <h3>We Connect</h3>
+        <p>Opening the doors to the right demand partners, technology vendors, and industry relationships that move business forward.</p>
+        <a href="#contact" class="pillar-link">Expand your network →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact-section" id="contact">
+    <div class="contact-inner">
+      <div class="section-label reveal">Get in Touch</div>
+      <h2 class="section-title reveal reveal-delay-1">Ready to talk?</h2>
+      <p class="section-sub reveal reveal-delay-2" style="margin: 0 auto 0;">Whether you have a brief or just want to explore, we want to hear from you.</p>
+
+      <div class="contact-form reveal reveal-delay-2">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" placeholder="Your name" />
+          </div>
+          <div class="form-group">
+            <label>Company</label>
+            <input type="text" placeholder="Company name" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" placeholder="you@company.com" />
+        </div>
+        <div class="form-group">
+          <label>Subject</label>
+          <select>
+            <option value="" disabled selected>Select a topic</option>
+            <option>Ad-Tech Strategy</option>
+            <option>Monetization</option>
+            <option>Connections & Partnerships</option>
+            <option>Product Manifestation</option>
+            <option>Business Opportunities</option>
+            <option>Consultancy</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea placeholder="Tell us about your project or opportunity..."></textarea>
+        </div>
+        <button class="form-submit" onclick="handleSubmit(event)">Send Message →</button>
+        <p class="form-note">Or reach us directly at <a href="mailto:info@vane-labs.com">info@vane-labs.com</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">
+      <svg width="28" height="28" viewBox="0 0 100 100" fill="none">
+        <defs>
+          <linearGradient id="ff1" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#5aaff0"/>
+            <stop offset="100%" stop-color="#0b3d8a"/>
+          </linearGradient>
+          <linearGradient id="ff2" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#f0d878"/>
+            <stop offset="100%" stop-color="#8a6010"/>
+          </linearGradient>
+        </defs>
+        <path d="M 10 52 L 36 78 L 90 16" stroke="url(#ff1)" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <line x1="14" y1="72" x2="38" y2="46" stroke="url(#ff2)" stroke-width="5.5" stroke-linecap="round"/>
+        <circle cx="14" cy="72" r="9.5" fill="url(#ff2)"/>
+        <circle cx="38" cy="46" r="9.5" fill="url(#ff2)"/>
+      </svg>
+      <span class="footer-wordmark"><em>VANE</em> LABS</span>
+    </div>
+    <p>© 2026 Vane Labs. All rights reserved.</p>
+    <p><a href="mailto:info@vane-labs.com">info@vane-labs.com</a></p>
+  </footer>
+
+  <script>
+    // Nav scroll effect
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+
+    // Counter animation
+    function animateCounter(el, target, suffix) {
+      const duration = 1800;
+      const start = performance.now();
+      const update = (now) => {
+        const t = Math.min((now - start) / duration, 1);
+        const ease = 1 - Math.pow(1 - t, 3);
+        el.textContent = Math.round(ease * target);
+        if (t < 1) requestAnimationFrame(update);
+        else el.textContent = target;
+      };
+      requestAnimationFrame(update);
+    }
+
+    const counters = document.querySelectorAll('[data-target]');
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          animateCounter(e.target, +e.target.dataset.target);
+          counterObserver.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    counters.forEach(c => counterObserver.observe(c));
+
+    // Form submit
+    function handleSubmit(e) {
+      e.preventDefault();
+      const btn = e.target;
+      btn.textContent = 'Sending...';
+      btn.disabled = true;
+      setTimeout(() => {
+        btn.textContent = '✓ Sent — we\'ll be in touch soon';
+        btn.style.background = 'linear-gradient(135deg, #16a34a, #15803d)';
+        btn.style.boxShadow = '0 4px 20px rgba(22,163,74,0.3)';
+      }, 1200);
+    }
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        document.querySelector(a.getAttribute('href'))?.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+  </script>
+</body>
+</html>
