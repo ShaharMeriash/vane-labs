@@ -4,14 +4,17 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Vane Labs — Ad-Tech & Growth</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --blue: #1a6fd4;
-      --blue-bright: #3a8ff0;
-      --gold: #c8a84b;
-      --gold-light: #e8cb78;
+      --green: #0A4F32;
+      --green-bright: #3CCC08;
+      --gold: #8D8C3D;
+      --gold-light: #b8aa4a;
       --bg: #06080f;
       --surface: #0d1120;
       --surface2: #141828;
@@ -23,7 +26,7 @@
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
       background: var(--bg);
       color: var(--text);
       line-height: 1.6;
@@ -58,7 +61,8 @@
       letter-spacing: 0.06em;
       color: var(--text);
     }
-    .nav-wordmark em { color: var(--blue-bright); font-style: normal; }
+    .nav-wordmark { font-family: 'Exo 2', sans-serif; }
+    .nav-wordmark em { color: var(--green-bright); font-style: normal; }
 
     .nav-links { display: flex; gap: 40px; }
     .nav-links a {
@@ -72,7 +76,7 @@
     .nav-links a:hover { color: var(--text); }
 
     .nav-cta {
-      background: var(--blue);
+      background: var(--green);
       color: #fff;
       padding: 10px 24px;
       border-radius: 6px;
@@ -81,12 +85,13 @@
       text-decoration: none;
       letter-spacing: 0.03em;
       transition: background .2s, transform .15s, box-shadow .2s;
-      box-shadow: 0 0 0 0 rgba(26,111,212,0);
+      box-shadow: 0 0 0 0 rgba(10,79,50,0);
     }
     .nav-cta:hover {
-      background: var(--blue-bright);
+      background: var(--green-bright);
+      color: #06080f;
       transform: translateY(-1px);
-      box-shadow: 0 6px 24px rgba(26,111,212,0.4);
+      box-shadow: 0 6px 24px rgba(60,204,8,0.35);
     }
 
     /* ─── HERO ─── */
@@ -116,19 +121,19 @@
 
     .orb1 {
       width: 700px; height: 700px;
-      background: radial-gradient(circle, rgba(26,111,212,0.18) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(10,79,50,0.22) 0%, transparent 70%);
       top: -200px; right: -100px;
       animation: orbFloat1 12s ease-in-out infinite;
     }
     .orb2 {
       width: 500px; height: 500px;
-      background: radial-gradient(circle, rgba(200,168,75,0.1) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(141,140,61,0.1) 0%, transparent 70%);
       bottom: -100px; left: 5%;
       animation: orbFloat2 15s ease-in-out infinite;
     }
     .orb3 {
       width: 400px; height: 400px;
-      background: radial-gradient(circle, rgba(58,143,240,0.12) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(60,204,8,0.08) 0%, transparent 70%);
       top: 40%; left: 40%;
       animation: orbFloat3 10s ease-in-out infinite;
     }
@@ -169,8 +174,8 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: rgba(26,111,212,0.12);
-      color: var(--blue-bright);
+      background: rgba(10,79,50,0.2);
+      color: var(--green-bright);
       font-size: 11.5px;
       font-weight: 700;
       letter-spacing: 0.14em;
@@ -178,14 +183,14 @@
       padding: 6px 18px;
       border-radius: 100px;
       margin-bottom: 32px;
-      border: 1px solid rgba(26,111,212,0.3);
+      border: 1px solid rgba(60,204,8,0.25);
       opacity: 0;
       animation: fadeUp .8s .2s forwards;
     }
 
     .pulse-dot {
       width: 8px; height: 8px;
-      background: var(--blue-bright);
+      background: var(--green-bright);
       border-radius: 50%;
       animation: pulse 2s ease-in-out infinite;
     }
@@ -195,6 +200,7 @@
     }
 
     .hero h1 {
+      font-family: 'Exo 2', sans-serif;
       font-size: clamp(44px, 5.5vw, 78px);
       font-weight: 900;
       line-height: 1.08;
@@ -205,7 +211,7 @@
     }
 
     .hero h1 .blue {
-      background: linear-gradient(90deg, var(--blue-bright), #60b0ff);
+      background: linear-gradient(90deg, var(--green-bright), #7eff44);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -242,7 +248,7 @@
     }
 
     .btn-primary {
-      background: linear-gradient(135deg, var(--blue) 0%, var(--blue-bright) 100%);
+      background: linear-gradient(135deg, var(--green) 0%, var(--green-bright) 100%);
       color: #fff;
       padding: 16px 36px;
       border-radius: 8px;
@@ -251,11 +257,12 @@
       text-decoration: none;
       transition: transform .2s, box-shadow .2s;
       display: inline-block;
-      box-shadow: 0 4px 20px rgba(26,111,212,0.3);
+      box-shadow: 0 4px 20px rgba(10,79,50,0.4);
     }
     .btn-primary:hover {
       transform: translateY(-2px);
-      box-shadow: 0 8px 32px rgba(26,111,212,0.5);
+      box-shadow: 0 8px 32px rgba(60,204,8,0.4);
+      color: #06080f;
     }
 
     .btn-ghost {
@@ -270,9 +277,9 @@
       display: inline-block;
     }
     .btn-ghost:hover {
-      border-color: var(--blue);
+      border-color: var(--green-bright);
       color: var(--text);
-      background: rgba(26,111,212,0.08);
+      background: rgba(60,204,8,0.07);
     }
 
     /* Scroll indicator */
@@ -303,7 +310,7 @@
       position: absolute;
       top: 0; left: -100%;
       width: 100%; height: 100%;
-      background: var(--blue-bright);
+      background: var(--green-bright);
       animation: scrollLine 2s 1.5s ease-in-out infinite;
     }
     @keyframes scrollLine {
@@ -360,11 +367,12 @@
       font-weight: 700;
       letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: var(--blue-bright);
+      color: var(--green-bright);
       margin-bottom: 16px;
     }
 
     .section-title {
+      font-family: 'Exo 2', sans-serif;
       font-size: clamp(32px, 3.5vw, 52px);
       font-weight: 800;
       letter-spacing: -0.025em;
@@ -405,7 +413,7 @@
       position: absolute;
       top: 0; left: 0; right: 0;
       height: 2px;
-      background: linear-gradient(90deg, var(--blue), var(--blue-bright));
+      background: linear-gradient(90deg, var(--green), var(--green-bright));
       transform: scaleX(0);
       transform-origin: left;
       transition: transform .4s ease;
@@ -417,7 +425,7 @@
       font-size: 11px;
       font-weight: 700;
       letter-spacing: 0.15em;
-      color: var(--blue-bright);
+      color: var(--green-bright);
       opacity: 0.5;
       margin-bottom: 20px;
     }
@@ -499,12 +507,12 @@
       position: absolute;
       inset: 0;
       border-radius: 50%;
-      background: rgba(26,111,212,0.12);
-      border: 1px solid rgba(26,111,212,0.2);
+      background: rgba(10,79,50,0.18);
+      border: 1px solid rgba(60,204,8,0.2);
       transition: background .3s, transform .3s;
     }
     .pillar:hover .pillar-icon-bg {
-      background: rgba(26,111,212,0.2);
+      background: rgba(60,204,8,0.15);
       transform: scale(1.1);
     }
 
@@ -532,7 +540,7 @@
     .pillar-link {
       font-size: 13px;
       font-weight: 700;
-      color: var(--blue-bright);
+      color: var(--green-bright);
       text-decoration: none;
       letter-spacing: 0.04em;
       display: inline-flex;
@@ -545,7 +553,7 @@
     /* ─── STATS ─── */
     .stats-section {
       padding: 80px 64px;
-      background: linear-gradient(135deg, rgba(26,111,212,0.08) 0%, transparent 60%);
+      background: linear-gradient(135deg, rgba(10,79,50,0.12) 0%, transparent 60%);
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
     }
@@ -562,7 +570,7 @@
       font-weight: 900;
       letter-spacing: -0.03em;
       display: block;
-      background: linear-gradient(135deg, var(--blue-bright), var(--gold-light));
+      background: linear-gradient(135deg, var(--green-bright), var(--gold-light));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -588,7 +596,7 @@
       position: absolute;
       top: -200px; right: -200px;
       width: 600px; height: 600px;
-      background: radial-gradient(circle, rgba(200,168,75,0.06) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(141,140,61,0.06) 0%, transparent 70%);
       pointer-events: none;
     }
 
@@ -631,9 +639,9 @@
     .form-group input:focus,
     .form-group select:focus,
     .form-group textarea:focus {
-      border-color: var(--blue);
-      background: rgba(26,111,212,0.06);
-      box-shadow: 0 0 0 3px rgba(26,111,212,0.12);
+      border-color: var(--green-bright);
+      background: rgba(60,204,8,0.04);
+      box-shadow: 0 0 0 3px rgba(60,204,8,0.1);
     }
 
     .form-group select option { background: #0d1120; }
@@ -641,7 +649,7 @@
 
     .form-submit {
       width: 100%;
-      background: linear-gradient(135deg, var(--blue) 0%, var(--blue-bright) 100%);
+      background: linear-gradient(135deg, var(--green) 0%, var(--green-bright) 100%);
       color: #fff;
       border: none;
       padding: 16px;
@@ -653,11 +661,12 @@
       margin-top: 8px;
       font-family: inherit;
       letter-spacing: 0.02em;
-      box-shadow: 0 4px 20px rgba(26,111,212,0.3);
+      box-shadow: 0 4px 20px rgba(10,79,50,0.4);
     }
     .form-submit:hover {
       transform: translateY(-2px);
-      box-shadow: 0 8px 32px rgba(26,111,212,0.5);
+      box-shadow: 0 8px 32px rgba(60,204,8,0.35);
+      color: #06080f;
     }
 
     .form-note {
@@ -682,7 +691,8 @@
 
     .footer-logo { display: flex; align-items: center; gap: 10px; }
     .footer-wordmark { font-size: 14px; font-weight: 800; color: var(--text); letter-spacing: 0.06em; }
-    .footer-wordmark em { color: var(--blue-bright); font-style: normal; }
+    .footer-wordmark { font-family: 'Exo 2', sans-serif; }
+    .footer-wordmark em { color: var(--green-bright); font-style: normal; }
 
     footer p { font-size: 13px; color: rgba(238,240,248,0.25); }
     footer a { color: rgba(238,240,248,0.25); text-decoration: none; transition: color .2s; }
@@ -730,14 +740,14 @@
       <svg class="logo-svg" viewBox="0 0 100 100" fill="none">
         <defs>
           <linearGradient id="bg1" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stop-color="#5aaff0"/>
-            <stop offset="50%" stop-color="#1a6fd4"/>
-            <stop offset="100%" stop-color="#0b3d8a"/>
+            <stop offset="0%" stop-color="#3CCC08"/>
+            <stop offset="50%" stop-color="#0A4F32"/>
+            <stop offset="100%" stop-color="#062a1a"/>
           </linearGradient>
           <linearGradient id="bg2" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stop-color="#f0d878"/>
-            <stop offset="50%" stop-color="#c8a84b"/>
-            <stop offset="100%" stop-color="#8a6010"/>
+            <stop offset="0%" stop-color="#d4c060"/>
+            <stop offset="50%" stop-color="#8D8C3D"/>
+            <stop offset="100%" stop-color="#5a5010"/>
           </linearGradient>
           <filter id="bs"><feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.35"/></filter>
         </defs>
@@ -748,7 +758,7 @@
         <circle cx="11" cy="67" r="3.5" fill="rgba(255,255,255,0.5)"/>
         <circle cx="35" cy="41" r="3.5" fill="rgba(255,255,255,0.5)"/>
       </svg>
-      <span class="nav-wordmark"><em>VANE</em> LABS</span>
+      <span class="nav-wordmark"><em>VANE</em> | LABS</span>
     </div>
     <div class="nav-links">
       <a href="#services">Services</a>
@@ -1000,12 +1010,12 @@
       <svg width="28" height="28" viewBox="0 0 100 100" fill="none">
         <defs>
           <linearGradient id="ff1" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stop-color="#5aaff0"/>
-            <stop offset="100%" stop-color="#0b3d8a"/>
+            <stop offset="0%" stop-color="#3CCC08"/>
+            <stop offset="100%" stop-color="#0A4F32"/>
           </linearGradient>
           <linearGradient id="ff2" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stop-color="#f0d878"/>
-            <stop offset="100%" stop-color="#8a6010"/>
+            <stop offset="0%" stop-color="#d4c060"/>
+            <stop offset="100%" stop-color="#8D8C3D"/>
           </linearGradient>
         </defs>
         <path d="M 10 52 L 36 78 L 90 16" stroke="url(#ff1)" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
@@ -1013,7 +1023,7 @@
         <circle cx="14" cy="72" r="9.5" fill="url(#ff2)"/>
         <circle cx="38" cy="46" r="9.5" fill="url(#ff2)"/>
       </svg>
-      <span class="footer-wordmark"><em>VANE</em> LABS</span>
+      <span class="footer-wordmark"><em>VANE</em> | LABS</span>
     </div>
     <p>© 2026 Vane Labs. All rights reserved.</p>
     <p><a href="mailto:info@vane-labs.com">info@vane-labs.com</a></p>
