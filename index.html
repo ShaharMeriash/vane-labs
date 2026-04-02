@@ -56,6 +56,13 @@
     .nav-logo { display: flex; align-items: center; gap: 12px; cursor: pointer; }
     .logo-svg { width: 42px; height: 42px; }
 
+    /* Hero logo */
+    .hero-logo { margin-bottom: 28px; opacity: 0; animation: fadeUp .8s .1s forwards; }
+    .hero-logo svg { width: 88px; height: 88px; filter: drop-shadow(0 0 24px rgba(10,79,50,0.5)); }
+
+    /* Footer logo size override */
+    .footer-logo .logo-svg { width: 32px; height: 32px; }
+
     .nav-wordmark {
       font-size: 17px;
       font-weight: 800;
@@ -735,30 +742,53 @@
 </head>
 <body>
 
+<!-- ─── LOGO SYMBOL (reused throughout) ─── -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+  <symbol id="vane-logo" viewBox="0 0 200 200">
+    <!-- Inner circle around V -->
+    <circle cx="100" cy="100" r="40" stroke="#0A4F32" stroke-width="1.8" fill="none"/>
+    <!-- Bold V -->
+    <path d="M74,68 L88,68 L100,109 L112,68 L126,68 L100,129 Z" fill="#0A4F32"/>
+    <!-- Circuit traces: 16 groups rotated around a radius-70 ring -->
+    <!-- Shape A: line + branch up -->
+    <g transform="rotate(0,100,100)"><circle cx="170" cy="100" r="3.2" fill="#0A4F32"/><line x1="170" y1="100" x2="183" y2="100" stroke="#0A4F32" stroke-width="1.8" stroke-linecap="round"/><circle cx="183" cy="100" r="2.5" fill="#0A4F32"/><line x1="177" y1="100" x2="177" y2="91" stroke="#0A4F32" stroke-width="1.8" stroke-linecap="round"/><circle cx="177" cy="91" r="2" fill="#0A4F32"/></g>
+    <!-- Shape D: L up -->
+    <g transform="rotate(22,100,100)"><circle cx="170" cy="100" r="2.5" fill="#0A4F32"/><line x1="170" y1="100" x2="180" y2="100" stroke="#0A4F32" stroke-width="1.8" stroke-linecap="round"/><line x1="180" y1="100" x2="180" y2="91" stroke="#0A4F32" stroke-width="1.8" stroke-linecap="round"/><circle cx="180" cy="91" r="2.8" fill="#0A4F32"/></g>
+    <!-- Shape B: L down -->
+    <g transform="rotate(45,100,100)"><circle cx="170" cy="100" r="3" fill="#0A4F32"/><line x1="170" y1="100" x2="182" y2="100" stroke="#0A4F32" stroke-width="1.8" stroke-linecap="round"/><line x1="182" y1="100" x2="182" y2="111" stroke="#0A4F32" stroke-width="1.8" stroke-linecap="round"/><circle cx="182" cy="111" r="2.5" fill="#0A4F32"/></g>
+    <!-- Shape C: long + branch -->
+    <g transform="rotate(68,100,100)"><circle cx="170" cy="100" r="2.5" fill="#0A4F32"/><line x1="170" y1="100" x2="187" y2="100" stroke="#0A4F32" stroke-width="1.8" stroke-linecap="round"/><circle cx="187" cy="100" r="2" fill="#0A4F32"/><line x1="179" y1="100" x2="179" y2="90" stroke="#0A4F32" stroke-width="1.8" stroke-linecap="round"/><circle cx="179" cy="90" r="2.5" fill="#0A4F32"/></g>
+    <!-- Shape A -->
+    <g transform="rotate(90,100,100)"><circle cx="170" cy="100" r="3.2" fill="#0A4F32"/><line x1="170" y1="100" x2="183" y2="100" stroke="#0A4F32" stroke-width="1.8" stroke-linecap="round"/><circle cx="183" cy="100" r="2.5" fill="#0A4F32"/><line x1="176" y1="100" x2="176" y2="91" stroke="#0A4F32" stroke-width="1.8" stroke-linecap="round"/><circle cx="176" cy="91" r="2" fill="#0A4F32"/></g>
+    <!-- Shape D -->
+    <g transform="rotate(112,100,100)"><circle cx="170" cy="100" r="2.5" fill="#0A4F32"/><line x1="170" y1="100" x2="180" y2="100" stroke="#0A4F32" stroke-width="1.8" stroke-linecap="round"/><line x1="180" y1="100" x2="180" y2="91" stroke="#0A4F32" stroke-width="1.8" stroke-linecap="round"/><circle cx="180" cy="91" r="2.8" fill="#0A4F32"/></g>
+    <!-- Shape B -->
+    <g transform="rotate(135,100,100)"><circle cx="170" cy="100" r="3" fill="#0A4F32"/><line x1="170" y1="100" x2="182" y2="100" stroke="#0A4F32" stroke-width="1.8" stroke-linecap="round"/><line x1="182" y1="100" x2="182" y2="111" stroke="#0A4F32" stroke-width="1.8" stroke-linecap="round"/><circle cx="182" cy="111" r="2.5" fill="#0A4F32"/></g>
+    <!-- Shape E: double branch -->
+    <g transform="rotate(158,100,100)"><circle cx="170" cy="100" r="3" fill="#0A4F32"/><line x1="170" y1="100" x2="184" y2="100" stroke="#0A4F32" stroke-width="1.8" stroke-linecap="round"/><circle cx="184" cy="100" r="2" fill="#0A4F32"/><line x1="175" y1="100" x2="175" y2="91" stroke="#0A4F32" stroke-width="1.8" stroke-linecap="round"/><circle cx="175" cy="91" r="2" fill="#0A4F32"/><line x1="179" y1="100" x2="179" y2="110" stroke="#0A4F32" stroke-width="1.8" stroke-linecap="round"/><circle cx="179" cy="110" r="2" fill="#0A4F32"/></g>
+    <!-- Shape A -->
+    <g transform="rotate(180,100,100)"><circle cx="170" cy="100" r="3.2" fill="#0A4F32"/><line x1="170" y1="100" x2="183" y2="100" stroke="#0A4F32" stroke-width="1.8" stroke-linecap="round"/><circle cx="183" cy="100" r="2.5" fill="#0A4F32"/><line x1="177" y1="100" x2="177" y2="91" stroke="#0A4F32" stroke-width="1.8" stroke-linecap="round"/><circle cx="177" cy="91" r="2" fill="#0A4F32"/></g>
+    <!-- Shape D -->
+    <g transform="rotate(202,100,100)"><circle cx="170" cy="100" r="2.5" fill="#0A4F32"/><line x1="170" y1="100" x2="180" y2="100" stroke="#0A4F32" stroke-width="1.8" stroke-linecap="round"/><line x1="180" y1="100" x2="180" y2="110" stroke="#0A4F32" stroke-width="1.8" stroke-linecap="round"/><circle cx="180" cy="110" r="2.8" fill="#0A4F32"/></g>
+    <!-- Shape C -->
+    <g transform="rotate(225,100,100)"><circle cx="170" cy="100" r="2.5" fill="#0A4F32"/><line x1="170" y1="100" x2="187" y2="100" stroke="#0A4F32" stroke-width="1.8" stroke-linecap="round"/><circle cx="187" cy="100" r="2" fill="#0A4F32"/><line x1="179" y1="100" x2="179" y2="90" stroke="#0A4F32" stroke-width="1.8" stroke-linecap="round"/><circle cx="179" cy="90" r="2.5" fill="#0A4F32"/></g>
+    <!-- Shape B -->
+    <g transform="rotate(248,100,100)"><circle cx="170" cy="100" r="3" fill="#0A4F32"/><line x1="170" y1="100" x2="182" y2="100" stroke="#0A4F32" stroke-width="1.8" stroke-linecap="round"/><line x1="182" y1="100" x2="182" y2="111" stroke="#0A4F32" stroke-width="1.8" stroke-linecap="round"/><circle cx="182" cy="111" r="2.5" fill="#0A4F32"/></g>
+    <!-- Shape A -->
+    <g transform="rotate(270,100,100)"><circle cx="170" cy="100" r="3.2" fill="#0A4F32"/><line x1="170" y1="100" x2="183" y2="100" stroke="#0A4F32" stroke-width="1.8" stroke-linecap="round"/><circle cx="183" cy="100" r="2.5" fill="#0A4F32"/><line x1="176" y1="100" x2="176" y2="91" stroke="#0A4F32" stroke-width="1.8" stroke-linecap="round"/><circle cx="176" cy="91" r="2" fill="#0A4F32"/></g>
+    <!-- Shape D -->
+    <g transform="rotate(292,100,100)"><circle cx="170" cy="100" r="2.5" fill="#0A4F32"/><line x1="170" y1="100" x2="180" y2="100" stroke="#0A4F32" stroke-width="1.8" stroke-linecap="round"/><line x1="180" y1="100" x2="180" y2="91" stroke="#0A4F32" stroke-width="1.8" stroke-linecap="round"/><circle cx="180" cy="91" r="2.8" fill="#0A4F32"/></g>
+    <!-- Shape E -->
+    <g transform="rotate(315,100,100)"><circle cx="170" cy="100" r="3" fill="#0A4F32"/><line x1="170" y1="100" x2="184" y2="100" stroke="#0A4F32" stroke-width="1.8" stroke-linecap="round"/><circle cx="184" cy="100" r="2" fill="#0A4F32"/><line x1="175" y1="100" x2="175" y2="91" stroke="#0A4F32" stroke-width="1.8" stroke-linecap="round"/><circle cx="175" cy="91" r="2" fill="#0A4F32"/><line x1="179" y1="100" x2="179" y2="110" stroke="#0A4F32" stroke-width="1.8" stroke-linecap="round"/><circle cx="179" cy="110" r="2" fill="#0A4F32"/></g>
+    <!-- Shape B -->
+    <g transform="rotate(338,100,100)"><circle cx="170" cy="100" r="2.5" fill="#0A4F32"/><line x1="170" y1="100" x2="182" y2="100" stroke="#0A4F32" stroke-width="1.8" stroke-linecap="round"/><line x1="182" y1="100" x2="182" y2="91" stroke="#0A4F32" stroke-width="1.8" stroke-linecap="round"/><circle cx="182" cy="91" r="2.5" fill="#0A4F32"/></g>
+  </symbol>
+</svg>
+
   <!-- NAV -->
   <nav id="nav">
     <div class="nav-logo" onclick="scrollTo({top:0,behavior:'smooth'})">
-      <svg class="logo-svg" viewBox="0 0 100 100" fill="none">
-        <defs>
-          <linearGradient id="bg1" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stop-color="#1a7a48"/>
-            <stop offset="50%" stop-color="#0A4F32"/>
-            <stop offset="100%" stop-color="#062a1a"/>
-          </linearGradient>
-          <linearGradient id="bg2" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stop-color="#d4c060"/>
-            <stop offset="50%" stop-color="#8D8C3D"/>
-            <stop offset="100%" stop-color="#5a5010"/>
-          </linearGradient>
-          <filter id="bs"><feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.35"/></filter>
-        </defs>
-        <path d="M 10 52 L 36 78 L 90 16" stroke="url(#bg1)" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-        <line x1="14" y1="72" x2="38" y2="46" stroke="url(#bg2)" stroke-width="5.5" stroke-linecap="round" filter="url(#bs)"/>
-        <circle cx="14" cy="72" r="9.5" fill="url(#bg2)" filter="url(#bs)"/>
-        <circle cx="38" cy="46" r="9.5" fill="url(#bg2)" filter="url(#bs)"/>
-        <circle cx="11" cy="67" r="3.5" fill="rgba(255,255,255,0.5)"/>
-        <circle cx="35" cy="41" r="3.5" fill="rgba(255,255,255,0.5)"/>
-      </svg>
+      <svg class="logo-svg" viewBox="0 0 200 200"><use href="#vane-logo"/></svg>
       <span class="nav-wordmark"><em>VANE</em> | LABS</span>
     </div>
     <div class="nav-links">
@@ -778,6 +808,9 @@
       <div class="hero-orb orb3"></div>
     </div>
     <div class="hero-content">
+      <div class="hero-logo">
+        <svg viewBox="0 0 200 200"><use href="#vane-logo"/></svg>
+      </div>
       <div class="hero-eyebrow">
         <div class="pulse-dot"></div>
         Product Innovation Meets Programmatic Scale
@@ -1008,22 +1041,7 @@
   <!-- FOOTER -->
   <footer>
     <div class="footer-logo">
-      <svg width="28" height="28" viewBox="0 0 100 100" fill="none">
-        <defs>
-          <linearGradient id="ff1" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stop-color="#1a7a48"/>
-            <stop offset="100%" stop-color="#0A4F32"/>
-          </linearGradient>
-          <linearGradient id="ff2" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stop-color="#d4c060"/>
-            <stop offset="100%" stop-color="#8D8C3D"/>
-          </linearGradient>
-        </defs>
-        <path d="M 10 52 L 36 78 L 90 16" stroke="url(#ff1)" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-        <line x1="14" y1="72" x2="38" y2="46" stroke="url(#ff2)" stroke-width="5.5" stroke-linecap="round"/>
-        <circle cx="14" cy="72" r="9.5" fill="url(#ff2)"/>
-        <circle cx="38" cy="46" r="9.5" fill="url(#ff2)"/>
-      </svg>
+      <svg class="logo-svg" viewBox="0 0 200 200"><use href="#vane-logo"/></svg>
       <span class="footer-wordmark"><em>VANE</em> | LABS</span>
     </div>
     <p>© 2026 Vane Labs. All rights reserved.</p>
