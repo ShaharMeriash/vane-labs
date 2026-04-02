@@ -55,14 +55,14 @@
     }
 
     .nav-logo { display: flex; align-items: center; gap: 12px; cursor: pointer; }
-    .logo-svg { width: 42px; height: 42px; }
+    .logo-img { width: 44px; height: 44px; object-fit: contain; }
 
     /* Hero logo */
     .hero-logo { margin-bottom: 28px; opacity: 0; animation: fadeUp .8s .1s forwards; }
-    .hero-logo svg { width: 88px; height: 88px; filter: drop-shadow(0 0 24px rgba(10,79,50,0.5)); }
+    .hero-logo img { width: 100px; height: 100px; object-fit: contain; filter: drop-shadow(0 0 24px rgba(10,79,50,0.6)); }
 
     /* Footer logo size override */
-    .footer-logo .logo-svg { width: 32px; height: 32px; }
+    .footer-logo .logo-img { width: 34px; height: 34px; }
 
     .nav-wordmark {
       font-family: 'Rajdhani', sans-serif;
@@ -752,9 +752,9 @@
 </head>
 <body>
 
-<!-- ─── LOGO SYMBOL (reused throughout) ─── -->
+<!-- SVG SYMBOL REMOVED — using PNG logo -->
 <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
-  <symbol id="vane-logo" viewBox="0 0 200 200">
+  <symbol id="vane-logo-unused" viewBox="0 0 200 200">
     <defs>
       <radialGradient id="vl-glow" cx="50%" cy="50%" r="50%">
         <stop offset="0%" stop-color="#1a6b3a" stop-opacity="0.3"/>
@@ -880,7 +880,7 @@
   <!-- NAV -->
   <nav id="nav">
     <div class="nav-logo" onclick="scrollTo({top:0,behavior:'smooth'})">
-      <svg class="logo-svg" viewBox="0 0 200 200"><use href="#vane-logo"/></svg>
+      <img class="logo-img" src="logo.png" alt="Vane Labs" />
       <span class="nav-wordmark"><em>VANE</em> | LABS</span>
     </div>
     <div class="nav-links">
@@ -901,7 +901,7 @@
     </div>
     <div class="hero-content">
       <div class="hero-logo">
-        <svg viewBox="0 0 200 200"><use href="#vane-logo"/></svg>
+        <img src="logo.png" alt="Vane Labs" />
       </div>
       <div class="hero-eyebrow">
         <div class="pulse-dot"></div>
@@ -1133,7 +1133,7 @@
   <!-- FOOTER -->
   <footer>
     <div class="footer-logo">
-      <svg class="logo-svg" viewBox="0 0 200 200"><use href="#vane-logo"/></svg>
+      <img class="logo-img" src="logo.png" alt="Vane Labs" />
       <span class="footer-wordmark"><em>VANE</em> | LABS</span>
     </div>
     <p>© 2026 Vane Labs. All rights reserved.</p>
