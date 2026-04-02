@@ -56,14 +56,14 @@
 
     .nav-logo { display: flex; align-items: center; cursor: pointer; }
     /* Nav uses horizontal logo (icon + wordmark as one image) */
-    .nav-logo-img { height: 40px; width: auto; object-fit: contain; mix-blend-mode: multiply; }
+    .nav-logo-img { height: 40px; width: auto; object-fit: contain; filter: url(#remove-white); }
 
     /* Hero logo — icon only, large */
     .hero-logo { margin-bottom: 32px; opacity: 0; animation: fadeUp .8s .1s forwards; }
-    .hero-logo img { width: 110px; height: 110px; object-fit: contain; mix-blend-mode: multiply; filter: drop-shadow(0 0 32px rgba(10,79,50,0.7)); }
+    .hero-logo img { width: 110px; height: 110px; object-fit: contain; filter: url(#remove-white) drop-shadow(0 0 32px rgba(10,79,50,0.7)); }
 
     /* Footer logo — icon only, small */
-    .footer-logo-img { height: 32px; width: auto; object-fit: contain; mix-blend-mode: multiply; }
+    .footer-logo-img { height: 32px; width: auto; object-fit: contain; filter: url(#remove-white); }
 
     .nav-links { display: flex; gap: 40px; }
     .nav-links a {
@@ -743,6 +743,13 @@
   </style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute;pointer-events:none">
+  <defs>
+    <filter id="remove-white" color-interpolation-filters="sRGB">
+      <feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  -1 -1 -1 0 3"/>
+    </filter>
+  </defs>
+</svg>
 
 <!-- SVG SYMBOL REMOVED — using PNG logo -->
 <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
