@@ -58,10 +58,6 @@
     /* Nav uses horizontal logo (icon + wordmark as one image) */
     .nav-logo-img { height: 40px; width: auto; object-fit: contain; filter: url(#remove-white); }
 
-    /* Hero logo — icon only, large */
-    .hero-logo { margin-bottom: 32px; opacity: 0; animation: fadeUp .8s .1s forwards; }
-    .hero-logo img { width: 110px; height: 110px; object-fit: contain; filter: url(#remove-white) drop-shadow(0 0 32px rgba(10,79,50,0.7)); }
-
     /* Footer logo — icon only, small */
     .footer-logo-img { height: 32px; width: auto; object-fit: contain; filter: url(#remove-white); }
 
@@ -439,10 +435,12 @@
       margin-bottom: 20px;
     }
 
-    .svc-icon {
-      font-size: 28px;
+    .svc-accent {
+      width: 28px;
+      height: 3px;
+      background: linear-gradient(90deg, #3CCC08, transparent);
       margin-bottom: 20px;
-      display: block;
+      border-radius: 2px;
     }
 
     .svc-card h3 {
@@ -528,8 +526,12 @@
     .pillar-icon {
       position: relative;
       z-index: 1;
-      font-size: 28px;
+      font-size: 22px;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      color: #3CCC08;
       line-height: 72px;
+      letter-spacing: 0.05em;
     }
 
     .pillar h3 {
@@ -898,9 +900,6 @@
       <div class="hero-orb orb3"></div>
     </div>
     <div class="hero-content">
-      <div class="hero-logo">
-        <img src="logo.png" alt="Vane Labs" />
-      </div>
       <div class="hero-eyebrow">
         <div class="pulse-dot"></div>
         Product Innovation Meets Programmatic Scale
@@ -974,7 +973,7 @@
     <div class="services-grid">
       <div class="svc-card reveal reveal-delay-1">
         <div class="svc-number">01</div>
-        <span class="svc-icon">📡</span>
+        <div class="svc-accent"></div>
         <h3>Ad-Tech Strategy</h3>
         <p>Programmatic architecture, supply-path optimisation, and demand curation built for your specific inventory.</p>
         <ul class="svc-list">
@@ -986,7 +985,7 @@
       </div>
       <div class="svc-card reveal reveal-delay-2">
         <div class="svc-number">02</div>
-        <span class="svc-icon">💰</span>
+        <div class="svc-accent"></div>
         <h3>Monetization</h3>
         <p>We audit your stack, close yield gaps, and build revenue models aligned with your audience and inventory.</p>
         <ul class="svc-list">
@@ -998,7 +997,7 @@
       </div>
       <div class="svc-card reveal reveal-delay-3">
         <div class="svc-number">03</div>
-        <span class="svc-icon">🔗</span>
+        <div class="svc-accent"></div>
         <h3>Connections</h3>
         <p>A deep network of DSPs, SSPs, agencies, and direct advertisers — activated on your behalf.</p>
         <ul class="svc-list">
@@ -1010,7 +1009,7 @@
       </div>
       <div class="svc-card reveal reveal-delay-1">
         <div class="svc-number">04</div>
-        <span class="svc-icon">🚀</span>
+        <div class="svc-accent"></div>
         <h3>Product Manifestation</h3>
         <p>From concept to market — we take ad-tech ideas through spec, build, and GTM at pace.</p>
         <ul class="svc-list">
@@ -1022,7 +1021,7 @@
       </div>
       <div class="svc-card reveal reveal-delay-2">
         <div class="svc-number">05</div>
-        <span class="svc-icon">🎯</span>
+        <div class="svc-accent"></div>
         <h3>Business Opportunities</h3>
         <p>We surface the white spaces, emerging channels, and structures others miss — then help you move first.</p>
         <ul class="svc-list">
@@ -1034,7 +1033,7 @@
       </div>
       <div class="svc-card reveal reveal-delay-3">
         <div class="svc-number">06</div>
-        <span class="svc-icon">🧭</span>
+        <div class="svc-accent"></div>
         <h3>Consultancy</h3>
         <p>Senior ad-tech expertise embedded into your team — without the overhead of a full-time hire.</p>
         <ul class="svc-list">
@@ -1056,7 +1055,7 @@
       <div class="pillar reveal reveal-delay-1">
         <div class="pillar-icon-wrap">
           <div class="pillar-icon-bg"></div>
-          <div class="pillar-icon">🔧</div>
+          <div class="pillar-icon">01</div>
         </div>
         <h3>We Build</h3>
         <p>Ad-tech products that go from concept to market without getting lost in development cycles. Real products, real timelines.</p>
@@ -1065,7 +1064,7 @@
       <div class="pillar reveal reveal-delay-2">
         <div class="pillar-icon-wrap">
           <div class="pillar-icon-bg"></div>
-          <div class="pillar-icon">📈</div>
+          <div class="pillar-icon">02</div>
         </div>
         <h3>We Monetize</h3>
         <p>Finding and unlocking revenue that already exists in your inventory, audience, and technology stack.</p>
@@ -1074,7 +1073,7 @@
       <div class="pillar reveal reveal-delay-3">
         <div class="pillar-icon-wrap">
           <div class="pillar-icon-bg"></div>
-          <div class="pillar-icon">🌐</div>
+          <div class="pillar-icon">03</div>
         </div>
         <h3>We Connect</h3>
         <p>Opening the doors to the right demand partners, technology vendors, and industry relationships that move business forward.</p>
@@ -1090,24 +1089,26 @@
       <h2 class="section-title reveal reveal-delay-1">Ready to talk?</h2>
       <p class="section-sub reveal reveal-delay-2" style="margin: 0 auto 0;">Whether you have a brief or just want to explore, we want to hear from you.</p>
 
-      <div class="contact-form reveal reveal-delay-2">
+      <form class="contact-form reveal reveal-delay-2" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" onsubmit="handleSubmit(event)">
+        <input type="hidden" name="form-name" value="contact" />
+        <p style="display:none"><label>Don't fill this out: <input name="bot-field" /></label></p>
         <div class="form-row">
           <div class="form-group">
             <label>Full Name</label>
-            <input type="text" placeholder="Your name" />
+            <input type="text" name="name" placeholder="Your name" required />
           </div>
           <div class="form-group">
             <label>Company</label>
-            <input type="text" placeholder="Company name" />
+            <input type="text" name="company" placeholder="Company name" />
           </div>
         </div>
         <div class="form-group">
           <label>Email</label>
-          <input type="email" placeholder="you@company.com" />
+          <input type="email" name="email" placeholder="you@company.com" required />
         </div>
         <div class="form-group">
           <label>Subject</label>
-          <select>
+          <select name="subject">
             <option value="" disabled selected>Select a topic</option>
             <option>Ad-Tech Strategy</option>
             <option>Monetization</option>
@@ -1120,11 +1121,11 @@
         </div>
         <div class="form-group">
           <label>Message</label>
-          <textarea placeholder="Tell us about your project or opportunity..."></textarea>
+          <textarea name="message" placeholder="Tell us about your project or opportunity..."></textarea>
         </div>
-        <button class="form-submit" onclick="handleSubmit(event)">Send Message →</button>
+        <button type="submit" class="form-submit">Send Message →</button>
         <p class="form-note">Or reach us directly at <a href="mailto:info@vane-labs.com">info@vane-labs.com</a></p>
-      </div>
+      </form>
     </div>
   </section>
 
@@ -1181,17 +1182,26 @@
     }, { threshold: 0.5 });
     counters.forEach(c => counterObserver.observe(c));
 
-    // Form submit
+    // Form submit — posts to Netlify Forms
     function handleSubmit(e) {
       e.preventDefault();
-      const btn = e.target;
+      const form = e.target;
+      const btn = form.querySelector('button[type="submit"]');
       btn.textContent = 'Sending...';
       btn.disabled = true;
-      setTimeout(() => {
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(new FormData(form)).toString()
+      }).then(() => {
         btn.textContent = '✓ Sent — we\'ll be in touch soon';
         btn.style.background = 'linear-gradient(135deg, #16a34a, #15803d)';
         btn.style.boxShadow = '0 4px 20px rgba(22,163,74,0.3)';
-      }, 1200);
+        form.reset();
+      }).catch(() => {
+        btn.textContent = 'Error — please email us directly';
+        btn.disabled = false;
+      });
     }
 
     // Smooth scroll
