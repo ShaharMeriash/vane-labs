@@ -6,20 +6,21 @@
   <title>Vane Labs — Ad-Tech & Growth</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
       --green: #0A4F32;
-      --green-bright: #1a7a48;
-      --green-accent: #2db866;
-      --gold: #887805;
-      --gold-light: #b8aa4a;
+      --green-bright: #3CCC08;
+      --green-mid: #1a6b3a;
+      --gold: #BD8C3D;
+      --gold-dark: #887B05;
       --bg: #06080f;
-      --surface: #0d1120;
-      --surface2: #141828;
-      --border: rgba(255,255,255,0.07);
+      --surface: #0c0f0d;
+      --surface2: #121a14;
+      --border: rgba(10,79,50,0.25);
+      --border-subtle: rgba(255,255,255,0.06);
       --text: #eef0f8;
       --muted: rgba(238,240,248,0.45);
     }
@@ -27,7 +28,7 @@
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+      font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
       background: var(--bg);
       color: var(--text);
       line-height: 1.6;
@@ -64,13 +65,13 @@
     .footer-logo .logo-svg { width: 32px; height: 32px; }
 
     .nav-wordmark {
-      font-size: 17px;
-      font-weight: 800;
-      letter-spacing: 0.06em;
-      color: var(--text);
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--gold-dark);
     }
-    .nav-wordmark { font-family: 'Exo 2', sans-serif; }
-    .nav-wordmark em { color: var(--green-bright); font-style: normal; }
+    .nav-wordmark em { color: var(--gold-dark); font-style: normal; }
 
     .nav-links { display: flex; gap: 40px; }
     .nav-links a {
@@ -84,22 +85,23 @@
     .nav-links a:hover { color: var(--text); }
 
     .nav-cta {
-      background: var(--green);
+      background: #0A4F32;
       color: #fff;
       padding: 10px 24px;
-      border-radius: 6px;
-      font-size: 13.5px;
+      border-radius: 4px;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 14px;
       font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
       text-decoration: none;
-      letter-spacing: 0.03em;
       transition: background .2s, transform .15s, box-shadow .2s;
-      box-shadow: 0 0 0 0 rgba(10,79,50,0);
+      border: 1px solid rgba(189,140,61,0.3);
     }
     .nav-cta:hover {
-      background: var(--green-bright);
-      color: #06080f;
+      background: #1a6b3a;
       transform: translateY(-1px);
-      box-shadow: 0 6px 24px rgba(26,122,72,0.35);
+      box-shadow: 0 6px 24px rgba(10,79,50,0.4);
     }
 
     /* ─── HERO ─── */
@@ -182,23 +184,23 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: rgba(10,79,50,0.2);
-      color: var(--green-bright);
+      background: rgba(10,79,50,0.25);
+      color: #3CCC08;
       font-size: 11.5px;
-      font-weight: 700;
+      font-weight: 600;
       letter-spacing: 0.14em;
       text-transform: uppercase;
       padding: 6px 18px;
       border-radius: 100px;
       margin-bottom: 32px;
-      border: 1px solid rgba(26,122,72,0.3);
+      border: 1px solid rgba(10,79,50,0.5);
       opacity: 0;
       animation: fadeUp .8s .2s forwards;
     }
 
     .pulse-dot {
       width: 8px; height: 8px;
-      background: var(--green-bright);
+      background: #3CCC08;
       border-radius: 50%;
       animation: pulse 2s ease-in-out infinite;
     }
@@ -208,7 +210,7 @@
     }
 
     .hero h1 {
-      font-family: 'Exo 2', sans-serif;
+      font-family: 'Rajdhani', sans-serif;
       font-size: clamp(44px, 5.5vw, 78px);
       font-weight: 900;
       line-height: 1.08;
@@ -219,14 +221,14 @@
     }
 
     .hero h1 .blue {
-      background: linear-gradient(90deg, var(--green-bright), #2db866);
+      background: linear-gradient(90deg, #3CCC08, #0A4F32);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
 
     .hero h1 .gold {
-      background: linear-gradient(90deg, var(--gold-light), var(--gold));
+      background: linear-gradient(90deg, #BD8C3D, #887B05);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -256,38 +258,44 @@
     }
 
     .btn-primary {
-      background: linear-gradient(135deg, var(--green) 0%, var(--green-bright) 100%);
+      background: linear-gradient(135deg, #0A4F32 0%, #1a6b3a 100%);
       color: #fff;
       padding: 16px 36px;
-      border-radius: 8px;
+      border-radius: 4px;
+      font-family: 'Rajdhani', sans-serif;
       font-weight: 700;
-      font-size: 15px;
+      font-size: 16px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
       text-decoration: none;
       transition: transform .2s, box-shadow .2s;
       display: inline-block;
       box-shadow: 0 4px 20px rgba(10,79,50,0.4);
+      border: 1px solid rgba(189,140,61,0.25);
     }
     .btn-primary:hover {
       transform: translateY(-2px);
-      box-shadow: 0 8px 32px rgba(26,122,72,0.4);
-      color: #06080f;
+      box-shadow: 0 8px 32px rgba(10,79,50,0.55);
     }
 
     .btn-ghost {
-      border: 1px solid rgba(255,255,255,0.15);
-      color: var(--muted);
+      border: 1px solid rgba(189,140,61,0.4);
+      color: #BD8C3D;
       padding: 16px 36px;
-      border-radius: 8px;
-      font-weight: 600;
-      font-size: 15px;
+      border-radius: 4px;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: 16px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
       text-decoration: none;
       transition: border-color .2s, color .2s, background .2s;
       display: inline-block;
     }
     .btn-ghost:hover {
-      border-color: var(--green-bright);
-      color: var(--text);
-      background: rgba(10,79,50,0.1);
+      border-color: #BD8C3D;
+      color: #fff;
+      background: rgba(189,140,61,0.1);
     }
 
     /* Scroll indicator */
@@ -318,7 +326,7 @@
       position: absolute;
       top: 0; left: -100%;
       width: 100%; height: 100%;
-      background: var(--green-bright);
+      background: #3CCC08;
       animation: scrollLine 2s 1.5s ease-in-out infinite;
     }
     @keyframes scrollLine {
@@ -371,16 +379,17 @@
     .section { padding: 110px 64px; }
 
     .section-label {
-      font-size: 11.5px;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 12px;
       font-weight: 700;
-      letter-spacing: 0.16em;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: var(--green-bright);
+      color: #BD8C3D;
       margin-bottom: 16px;
     }
 
     .section-title {
-      font-family: 'Exo 2', sans-serif;
+      font-family: 'Rajdhani', sans-serif;
       font-size: clamp(32px, 3.5vw, 52px);
       font-weight: 800;
       letter-spacing: -0.025em;
@@ -421,7 +430,7 @@
       position: absolute;
       top: 0; left: 0; right: 0;
       height: 2px;
-      background: linear-gradient(90deg, var(--green), var(--green-bright));
+      background: linear-gradient(90deg, #0A4F32, #3CCC08);
       transform: scaleX(0);
       transform-origin: left;
       transition: transform .4s ease;
@@ -433,7 +442,7 @@
       font-size: 11px;
       font-weight: 700;
       letter-spacing: 0.15em;
-      color: var(--green-bright);
+      color: #3CCC08;
       opacity: 0.5;
       margin-bottom: 20px;
     }
@@ -546,17 +555,19 @@
     }
 
     .pillar-link {
+      font-family: 'Rajdhani', sans-serif;
       font-size: 13px;
       font-weight: 700;
-      color: var(--green-bright);
+      color: #BD8C3D;
       text-decoration: none;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      transition: gap .2s;
+      transition: gap .2s, color .2s;
     }
-    .pillar-link:hover { gap: 10px; }
+    .pillar-link:hover { gap: 10px; color: #fff; }
 
     /* ─── STATS ─── */
     .stats-section {
@@ -578,7 +589,7 @@
       font-weight: 900;
       letter-spacing: -0.03em;
       display: block;
-      background: linear-gradient(135deg, var(--green-bright), var(--gold-light));
+      background: linear-gradient(135deg, #3CCC08, #BD8C3D);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -647,9 +658,9 @@
     .form-group input:focus,
     .form-group select:focus,
     .form-group textarea:focus {
-      border-color: var(--green-bright);
+      border-color: #0A4F32;
       background: rgba(10,79,50,0.06);
-      box-shadow: 0 0 0 3px rgba(26,122,72,0.12);
+      box-shadow: 0 0 0 3px rgba(10,79,50,0.15);
     }
 
     .form-group select option { background: #0d1120; }
@@ -657,24 +668,24 @@
 
     .form-submit {
       width: 100%;
-      background: linear-gradient(135deg, var(--green) 0%, var(--green-bright) 100%);
+      background: linear-gradient(135deg, #0A4F32 0%, #1a6b3a 100%);
       color: #fff;
-      border: none;
+      border: 1px solid rgba(189,140,61,0.3);
       padding: 16px;
-      border-radius: 8px;
+      border-radius: 4px;
+      font-family: 'Rajdhani', sans-serif;
       font-size: 16px;
       font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
       cursor: pointer;
       transition: transform .2s, box-shadow .2s;
       margin-top: 8px;
-      font-family: inherit;
-      letter-spacing: 0.02em;
       box-shadow: 0 4px 20px rgba(10,79,50,0.4);
     }
     .form-submit:hover {
       transform: translateY(-2px);
-      box-shadow: 0 8px 32px rgba(26,122,72,0.35);
-      color: #06080f;
+      box-shadow: 0 8px 32px rgba(10,79,50,0.55);
     }
 
     .form-note {
@@ -698,13 +709,12 @@
     }
 
     .footer-logo { display: flex; align-items: center; gap: 10px; }
-    .footer-wordmark { font-size: 14px; font-weight: 800; color: var(--text); letter-spacing: 0.06em; }
-    .footer-wordmark { font-family: 'Exo 2', sans-serif; }
-    .footer-wordmark em { color: var(--green-bright); font-style: normal; }
+    .footer-wordmark { font-family: 'Rajdhani', sans-serif; font-size: 18px; font-weight: 700; color: #887B05; letter-spacing: 0.1em; }
+    .footer-wordmark em { color: #887B05; font-style: normal; }
 
     footer p { font-size: 13px; color: rgba(238,240,248,0.25); }
     footer a { color: rgba(238,240,248,0.25); text-decoration: none; transition: color .2s; }
-    footer a:hover { color: var(--gold-light); }
+    footer a:hover { color: #BD8C3D; }
 
     /* ─── SCROLL ANIMATIONS ─── */
     .reveal {
@@ -745,43 +755,125 @@
 <!-- ─── LOGO SYMBOL (reused throughout) ─── -->
 <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
   <symbol id="vane-logo" viewBox="0 0 200 200">
-    <!-- Inner circle around V -->
-    <circle cx="100" cy="100" r="40" stroke="#0A4F32" stroke-width="1.8" fill="none"/>
+    <defs>
+      <radialGradient id="vl-glow" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#1a6b3a" stop-opacity="0.3"/>
+        <stop offset="100%" stop-color="#0A4F32" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+
+    <!-- Outer glow fill -->
+    <circle cx="100" cy="100" r="95" fill="url(#vl-glow)"/>
+
+    <!-- Outer ring (thick) -->
+    <circle cx="100" cy="100" r="82" stroke="#0A4F32" stroke-width="6" fill="none" opacity="0.5"/>
+    <!-- Inner ring (thinner) -->
+    <circle cx="100" cy="100" r="70" stroke="#0A4F32" stroke-width="3.5" fill="none" opacity="0.8"/>
+    <!-- Innermost ring around V -->
+    <circle cx="100" cy="100" r="44" stroke="#1a6b3a" stroke-width="2.5" fill="none"/>
+
+    <!-- Circuit nodes + traces on outer ring — 12 evenly spaced -->
+    <g stroke="#0A4F32" stroke-linecap="round" fill="#0A4F32">
+      <!-- 0° -->
+      <g transform="rotate(0,100,100)">
+        <circle cx="182" cy="100" r="4"/>
+        <line x1="182" y1="100" x2="196" y2="100" stroke-width="2.2"/>
+        <circle cx="196" cy="100" r="3"/>
+        <line x1="189" y1="100" x2="189" y2="90" stroke-width="2"/>
+        <circle cx="189" cy="90" r="2.5"/>
+      </g>
+      <!-- 30° -->
+      <g transform="rotate(30,100,100)">
+        <circle cx="182" cy="100" r="3"/>
+        <line x1="182" y1="100" x2="193" y2="100" stroke-width="2"/>
+        <line x1="193" y1="100" x2="193" y2="110" stroke-width="2"/>
+        <circle cx="193" cy="110" r="3.5"/>
+      </g>
+      <!-- 60° -->
+      <g transform="rotate(60,100,100)">
+        <circle cx="182" cy="100" r="4"/>
+        <line x1="182" y1="100" x2="197" y2="100" stroke-width="2.2"/>
+        <circle cx="197" cy="100" r="2.5"/>
+        <line x1="188" y1="100" x2="188" y2="89" stroke-width="2"/>
+        <circle cx="188" cy="89" r="3"/>
+        <line x1="194" y1="100" x2="194" y2="110" stroke-width="2"/>
+        <circle cx="194" cy="110" r="2"/>
+      </g>
+      <!-- 90° -->
+      <g transform="rotate(90,100,100)">
+        <circle cx="182" cy="100" r="3.5"/>
+        <line x1="182" y1="100" x2="194" y2="100" stroke-width="2"/>
+        <line x1="194" y1="100" x2="194" y2="91" stroke-width="2"/>
+        <circle cx="194" cy="91" r="3.5"/>
+      </g>
+      <!-- 120° -->
+      <g transform="rotate(120,100,100)">
+        <circle cx="182" cy="100" r="4"/>
+        <line x1="182" y1="100" x2="196" y2="100" stroke-width="2.2"/>
+        <circle cx="196" cy="100" r="2.5"/>
+        <line x1="190" y1="100" x2="190" y2="90" stroke-width="2"/>
+        <circle cx="190" cy="90" r="3"/>
+      </g>
+      <!-- 150° -->
+      <g transform="rotate(150,100,100)">
+        <circle cx="182" cy="100" r="3"/>
+        <line x1="182" y1="100" x2="193" y2="100" stroke-width="2"/>
+        <line x1="193" y1="100" x2="193" y2="111" stroke-width="2"/>
+        <circle cx="193" cy="111" r="3"/>
+      </g>
+      <!-- 180° -->
+      <g transform="rotate(180,100,100)">
+        <circle cx="182" cy="100" r="4"/>
+        <line x1="182" y1="100" x2="197" y2="100" stroke-width="2.2"/>
+        <circle cx="197" cy="100" r="3"/>
+        <line x1="188" y1="100" x2="188" y2="90" stroke-width="2"/>
+        <circle cx="188" cy="90" r="2.5"/>
+        <line x1="193" y1="100" x2="193" y2="110" stroke-width="2"/>
+        <circle cx="193" cy="110" r="2.5"/>
+      </g>
+      <!-- 210° -->
+      <g transform="rotate(210,100,100)">
+        <circle cx="182" cy="100" r="3.5"/>
+        <line x1="182" y1="100" x2="194" y2="100" stroke-width="2"/>
+        <line x1="194" y1="100" x2="194" y2="90" stroke-width="2"/>
+        <circle cx="194" cy="90" r="3.5"/>
+      </g>
+      <!-- 240° -->
+      <g transform="rotate(240,100,100)">
+        <circle cx="182" cy="100" r="4"/>
+        <line x1="182" y1="100" x2="196" y2="100" stroke-width="2.2"/>
+        <circle cx="196" cy="100" r="2.5"/>
+        <line x1="189" y1="100" x2="189" y2="110" stroke-width="2"/>
+        <circle cx="189" cy="110" r="3"/>
+      </g>
+      <!-- 270° -->
+      <g transform="rotate(270,100,100)">
+        <circle cx="182" cy="100" r="3"/>
+        <line x1="182" y1="100" x2="193" y2="100" stroke-width="2"/>
+        <line x1="193" y1="100" x2="193" y2="90" stroke-width="2"/>
+        <circle cx="193" cy="90" r="3.5"/>
+      </g>
+      <!-- 300° -->
+      <g transform="rotate(300,100,100)">
+        <circle cx="182" cy="100" r="4"/>
+        <line x1="182" y1="100" x2="196" y2="100" stroke-width="2.2"/>
+        <circle cx="196" cy="100" r="3"/>
+        <line x1="189" y1="100" x2="189" y2="89" stroke-width="2"/>
+        <circle cx="189" cy="89" r="2.5"/>
+      </g>
+      <!-- 330° -->
+      <g transform="rotate(330,100,100)">
+        <circle cx="182" cy="100" r="3.5"/>
+        <line x1="182" y1="100" x2="194" y2="100" stroke-width="2"/>
+        <line x1="194" y1="100" x2="194" y2="111" stroke-width="2"/>
+        <circle cx="194" cy="111" r="3"/>
+        <line x1="188" y1="100" x2="188" y2="90" stroke-width="2"/>
+        <circle cx="188" cy="90" r="2.5"/>
+      </g>
+    </g>
+
     <!-- Bold V -->
-    <path d="M74,68 L88,68 L100,109 L112,68 L126,68 L100,129 Z" fill="#0A4F32"/>
-    <!-- Circuit traces: 16 groups rotated around a radius-70 ring -->
-    <!-- Shape A: line + branch up -->
-    <g transform="rotate(0,100,100)"><circle cx="170" cy="100" r="3.2" fill="#0A4F32"/><line x1="170" y1="100" x2="183" y2="100" stroke="#0A4F32" stroke-width="1.8" stroke-linecap="round"/><circle cx="183" cy="100" r="2.5" fill="#0A4F32"/><line x1="177" y1="100" x2="177" y2="91" stroke="#0A4F32" stroke-width="1.8" stroke-linecap="round"/><circle cx="177" cy="91" r="2" fill="#0A4F32"/></g>
-    <!-- Shape D: L up -->
-    <g transform="rotate(22,100,100)"><circle cx="170" cy="100" r="2.5" fill="#0A4F32"/><line x1="170" y1="100" x2="180" y2="100" stroke="#0A4F32" stroke-width="1.8" stroke-linecap="round"/><line x1="180" y1="100" x2="180" y2="91" stroke="#0A4F32" stroke-width="1.8" stroke-linecap="round"/><circle cx="180" cy="91" r="2.8" fill="#0A4F32"/></g>
-    <!-- Shape B: L down -->
-    <g transform="rotate(45,100,100)"><circle cx="170" cy="100" r="3" fill="#0A4F32"/><line x1="170" y1="100" x2="182" y2="100" stroke="#0A4F32" stroke-width="1.8" stroke-linecap="round"/><line x1="182" y1="100" x2="182" y2="111" stroke="#0A4F32" stroke-width="1.8" stroke-linecap="round"/><circle cx="182" cy="111" r="2.5" fill="#0A4F32"/></g>
-    <!-- Shape C: long + branch -->
-    <g transform="rotate(68,100,100)"><circle cx="170" cy="100" r="2.5" fill="#0A4F32"/><line x1="170" y1="100" x2="187" y2="100" stroke="#0A4F32" stroke-width="1.8" stroke-linecap="round"/><circle cx="187" cy="100" r="2" fill="#0A4F32"/><line x1="179" y1="100" x2="179" y2="90" stroke="#0A4F32" stroke-width="1.8" stroke-linecap="round"/><circle cx="179" cy="90" r="2.5" fill="#0A4F32"/></g>
-    <!-- Shape A -->
-    <g transform="rotate(90,100,100)"><circle cx="170" cy="100" r="3.2" fill="#0A4F32"/><line x1="170" y1="100" x2="183" y2="100" stroke="#0A4F32" stroke-width="1.8" stroke-linecap="round"/><circle cx="183" cy="100" r="2.5" fill="#0A4F32"/><line x1="176" y1="100" x2="176" y2="91" stroke="#0A4F32" stroke-width="1.8" stroke-linecap="round"/><circle cx="176" cy="91" r="2" fill="#0A4F32"/></g>
-    <!-- Shape D -->
-    <g transform="rotate(112,100,100)"><circle cx="170" cy="100" r="2.5" fill="#0A4F32"/><line x1="170" y1="100" x2="180" y2="100" stroke="#0A4F32" stroke-width="1.8" stroke-linecap="round"/><line x1="180" y1="100" x2="180" y2="91" stroke="#0A4F32" stroke-width="1.8" stroke-linecap="round"/><circle cx="180" cy="91" r="2.8" fill="#0A4F32"/></g>
-    <!-- Shape B -->
-    <g transform="rotate(135,100,100)"><circle cx="170" cy="100" r="3" fill="#0A4F32"/><line x1="170" y1="100" x2="182" y2="100" stroke="#0A4F32" stroke-width="1.8" stroke-linecap="round"/><line x1="182" y1="100" x2="182" y2="111" stroke="#0A4F32" stroke-width="1.8" stroke-linecap="round"/><circle cx="182" cy="111" r="2.5" fill="#0A4F32"/></g>
-    <!-- Shape E: double branch -->
-    <g transform="rotate(158,100,100)"><circle cx="170" cy="100" r="3" fill="#0A4F32"/><line x1="170" y1="100" x2="184" y2="100" stroke="#0A4F32" stroke-width="1.8" stroke-linecap="round"/><circle cx="184" cy="100" r="2" fill="#0A4F32"/><line x1="175" y1="100" x2="175" y2="91" stroke="#0A4F32" stroke-width="1.8" stroke-linecap="round"/><circle cx="175" cy="91" r="2" fill="#0A4F32"/><line x1="179" y1="100" x2="179" y2="110" stroke="#0A4F32" stroke-width="1.8" stroke-linecap="round"/><circle cx="179" cy="110" r="2" fill="#0A4F32"/></g>
-    <!-- Shape A -->
-    <g transform="rotate(180,100,100)"><circle cx="170" cy="100" r="3.2" fill="#0A4F32"/><line x1="170" y1="100" x2="183" y2="100" stroke="#0A4F32" stroke-width="1.8" stroke-linecap="round"/><circle cx="183" cy="100" r="2.5" fill="#0A4F32"/><line x1="177" y1="100" x2="177" y2="91" stroke="#0A4F32" stroke-width="1.8" stroke-linecap="round"/><circle cx="177" cy="91" r="2" fill="#0A4F32"/></g>
-    <!-- Shape D -->
-    <g transform="rotate(202,100,100)"><circle cx="170" cy="100" r="2.5" fill="#0A4F32"/><line x1="170" y1="100" x2="180" y2="100" stroke="#0A4F32" stroke-width="1.8" stroke-linecap="round"/><line x1="180" y1="100" x2="180" y2="110" stroke="#0A4F32" stroke-width="1.8" stroke-linecap="round"/><circle cx="180" cy="110" r="2.8" fill="#0A4F32"/></g>
-    <!-- Shape C -->
-    <g transform="rotate(225,100,100)"><circle cx="170" cy="100" r="2.5" fill="#0A4F32"/><line x1="170" y1="100" x2="187" y2="100" stroke="#0A4F32" stroke-width="1.8" stroke-linecap="round"/><circle cx="187" cy="100" r="2" fill="#0A4F32"/><line x1="179" y1="100" x2="179" y2="90" stroke="#0A4F32" stroke-width="1.8" stroke-linecap="round"/><circle cx="179" cy="90" r="2.5" fill="#0A4F32"/></g>
-    <!-- Shape B -->
-    <g transform="rotate(248,100,100)"><circle cx="170" cy="100" r="3" fill="#0A4F32"/><line x1="170" y1="100" x2="182" y2="100" stroke="#0A4F32" stroke-width="1.8" stroke-linecap="round"/><line x1="182" y1="100" x2="182" y2="111" stroke="#0A4F32" stroke-width="1.8" stroke-linecap="round"/><circle cx="182" cy="111" r="2.5" fill="#0A4F32"/></g>
-    <!-- Shape A -->
-    <g transform="rotate(270,100,100)"><circle cx="170" cy="100" r="3.2" fill="#0A4F32"/><line x1="170" y1="100" x2="183" y2="100" stroke="#0A4F32" stroke-width="1.8" stroke-linecap="round"/><circle cx="183" cy="100" r="2.5" fill="#0A4F32"/><line x1="176" y1="100" x2="176" y2="91" stroke="#0A4F32" stroke-width="1.8" stroke-linecap="round"/><circle cx="176" cy="91" r="2" fill="#0A4F32"/></g>
-    <!-- Shape D -->
-    <g transform="rotate(292,100,100)"><circle cx="170" cy="100" r="2.5" fill="#0A4F32"/><line x1="170" y1="100" x2="180" y2="100" stroke="#0A4F32" stroke-width="1.8" stroke-linecap="round"/><line x1="180" y1="100" x2="180" y2="91" stroke="#0A4F32" stroke-width="1.8" stroke-linecap="round"/><circle cx="180" cy="91" r="2.8" fill="#0A4F32"/></g>
-    <!-- Shape E -->
-    <g transform="rotate(315,100,100)"><circle cx="170" cy="100" r="3" fill="#0A4F32"/><line x1="170" y1="100" x2="184" y2="100" stroke="#0A4F32" stroke-width="1.8" stroke-linecap="round"/><circle cx="184" cy="100" r="2" fill="#0A4F32"/><line x1="175" y1="100" x2="175" y2="91" stroke="#0A4F32" stroke-width="1.8" stroke-linecap="round"/><circle cx="175" cy="91" r="2" fill="#0A4F32"/><line x1="179" y1="100" x2="179" y2="110" stroke="#0A4F32" stroke-width="1.8" stroke-linecap="round"/><circle cx="179" cy="110" r="2" fill="#0A4F32"/></g>
-    <!-- Shape B -->
-    <g transform="rotate(338,100,100)"><circle cx="170" cy="100" r="2.5" fill="#0A4F32"/><line x1="170" y1="100" x2="182" y2="100" stroke="#0A4F32" stroke-width="1.8" stroke-linecap="round"/><line x1="182" y1="100" x2="182" y2="91" stroke="#0A4F32" stroke-width="1.8" stroke-linecap="round"/><circle cx="182" cy="91" r="2.5" fill="#0A4F32"/></g>
+    <path d="M72,64 L87,64 L100,104 L113,64 L128,64 L100,132 Z" fill="#0A4F32"/>
   </symbol>
 </svg>
 
