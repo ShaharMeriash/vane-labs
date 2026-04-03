@@ -57,9 +57,19 @@
     .nav-logo { display: flex; align-items: center; cursor: pointer; background: transparent; }
     .nav-logo-img { height: 80px; width: auto; object-fit: contain; background: transparent; display: block; }
 
-    /* Hero logo — icon only, large */
-    .hero-logo { margin-bottom: 36px; opacity: 0; animation: fadeUp .8s .1s forwards; background: transparent; }
-    .hero-logo img { width: 140px; height: 140px; object-fit: contain; background: transparent; display: block; filter: drop-shadow(0 0 40px rgba(60,204,8,0.35)); }
+    /* Hero logo — centered icon + name */
+    .hero-logo {
+      margin-bottom: 48px;
+      opacity: 0;
+      animation: fadeUp .8s .1s forwards;
+      background: transparent;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+    }
+    .hero-logo-icon { width: 160px; height: 160px; object-fit: contain; background: transparent; display: block; filter: drop-shadow(0 0 48px rgba(60,204,8,0.4)); }
+    .hero-logo-name { width: 260px; height: auto; object-fit: contain; background: transparent; display: block; }
 
     /* Footer logo */
     .footer-logo-img { height: 32px; width: auto; object-fit: contain; }
@@ -101,6 +111,7 @@
       min-height: 100vh;
       display: flex;
       align-items: center;
+      justify-content: center;
       padding: 160px 64px 100px;
       overflow: hidden;
     }
@@ -169,6 +180,12 @@
       position: relative;
       z-index: 1;
       max-width: 760px;
+      width: 100%;
+      margin: 0 auto;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     .hero-eyebrow {
@@ -233,6 +250,7 @@
       margin-bottom: 52px;
       opacity: 0;
       animation: fadeUp .8s .6s forwards;
+      text-align: center;
     }
 
     .hero-actions {
@@ -897,7 +915,8 @@
     </div>
     <div class="hero-content">
       <div class="hero-logo">
-        <img id="hero-logo-img" src="logo.png" alt="Vane Labs" />
+        <img id="hero-logo-img" class="hero-logo-icon" src="logo.png" alt="Vane Labs" />
+        <img id="hero-name-img" class="hero-logo-name" src="logo-name.png" alt="Vane Labs" />
       </div>
       <div class="hero-eyebrow">
         <div class="pulse-dot"></div>
@@ -1172,7 +1191,7 @@
       }
     }
 
-    document.querySelectorAll('.nav-logo-img, #hero-logo-img, .footer-logo-img').forEach(processLogoImg);
+    document.querySelectorAll('.nav-logo-img, #hero-logo-img, #hero-name-img, .footer-logo-img').forEach(processLogoImg);
 
     // Nav scroll effect
     const nav = document.getElementById('nav');
