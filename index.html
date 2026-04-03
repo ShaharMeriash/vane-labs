@@ -1191,7 +1191,14 @@
       }
     }
 
-    document.querySelectorAll('.nav-logo-img, #hero-logo-img, #hero-name-img, .footer-logo-img').forEach(processLogoImg);
+    function initLogos() {
+      document.querySelectorAll('.nav-logo-img, #hero-logo-img, #hero-name-img, .footer-logo-img').forEach(processLogoImg);
+    }
+    if (document.readyState === 'complete') {
+      initLogos();
+    } else {
+      window.addEventListener('load', initLogos);
+    }
 
     // Nav scroll effect
     const nav = document.getElementById('nav');
