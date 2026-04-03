@@ -59,17 +59,17 @@
 
     /* Hero logo — centered icon + name */
     .hero-logo {
-      margin-bottom: 48px;
+      margin-bottom: 28px;
       opacity: 0;
       animation: fadeUp .8s .1s forwards;
       background: transparent;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 24px;
+      gap: 0;
     }
-    .hero-logo-icon { width: 160px; height: 160px; object-fit: contain; background: transparent; display: block; filter: drop-shadow(0 0 48px rgba(60,204,8,0.4)); }
-    .hero-logo-name { width: 260px; height: auto; object-fit: contain; background: transparent; display: block; }
+    .hero-logo-icon { width: 140px; height: 140px; object-fit: contain; background: transparent; display: block; filter: drop-shadow(0 0 48px rgba(60,204,8,0.4)); }
+    .hero-logo-name { width: 280px; height: auto; max-height: 80px; object-fit: contain; object-position: center top; background: transparent; display: block; margin-top: -8px; }
 
     /* Footer logo */
     .footer-logo-img { height: 32px; width: auto; object-fit: contain; }
@@ -112,7 +112,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 160px 64px 100px;
+      padding: 120px 64px 80px;
       overflow: hidden;
     }
 
@@ -200,7 +200,7 @@
       text-transform: uppercase;
       padding: 6px 18px;
       border-radius: 100px;
-      margin-bottom: 32px;
+      margin-bottom: 20px;
       border: 1px solid rgba(10,79,50,0.5);
       opacity: 0;
       animation: fadeUp .8s .2s forwards;
@@ -223,7 +223,7 @@
       font-weight: 900;
       line-height: 1.08;
       letter-spacing: -0.03em;
-      margin-bottom: 32px;
+      margin-bottom: 20px;
       opacity: 0;
       animation: fadeUp .8s .4s forwards;
     }
@@ -247,7 +247,7 @@
       color: var(--muted);
       max-width: 560px;
       line-height: 1.8;
-      margin-bottom: 52px;
+      margin-bottom: 36px;
       opacity: 0;
       animation: fadeUp .8s .6s forwards;
       text-align: center;
