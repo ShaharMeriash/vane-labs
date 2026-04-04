@@ -1157,49 +1157,6 @@
   </footer>
 
   <script>
-    // Remove neutral/gray pixels (checkerboard bg, white bg) by saturation
-    // Colored pixels (green logo, gold text) have high saturation — kept
-    // Gray/white/black neutral pixels have low saturation — made transparent
-    function dewhiteLogo(img) {
-      const canvas = document.createElement('canvas');
-      canvas.width = img.naturalWidth;
-      canvas.height = img.naturalHeight;
-      const ctx = canvas.getContext('2d');
-      ctx.drawImage(img, 0, 0);
-      const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-      const d = imageData.data;
-      for (let i = 0; i < d.length; i += 4) {
-        const a = d[i+3];
-        if (a < 10) continue; // already transparent
-        const r = d[i], g = d[i+1], b = d[i+2];
-        const max = Math.max(r, g, b);
-        const min = Math.min(r, g, b);
-        const saturation = max - min; // 0 = gray, higher = colored
-        if (saturation < 38) {
-          d[i+3] = 0; // make transparent
-        }
-      }
-      ctx.putImageData(imageData, 0, 0);
-      img.src = canvas.toDataURL('image/png');
-    }
-
-    function processLogoImg(img) {
-      if (img.complete && img.naturalWidth > 0) {
-        dewhiteLogo(img);
-      } else {
-        img.addEventListener('load', () => dewhiteLogo(img));
-      }
-    }
-
-    function initLogos() {
-      document.querySelectorAll('.nav-logo-img, #hero-logo-img, #hero-name-img, .footer-logo-img').forEach(processLogoImg);
-    }
-    if (document.readyState === 'complete') {
-      initLogos();
-    } else {
-      window.addEventListener('load', initLogos);
-    }
-
     // Nav scroll effect
     const nav = document.getElementById('nav');
     window.addEventListener('scroll', () => {
