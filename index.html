@@ -288,17 +288,34 @@
     }
     .btn-gold:hover { background: #D49E46; border-color: #D49E46; }
     .contact-success {
-      color: var(--bg); font-size: 17px; line-height: 1.55;
+      grid-column: 1;
+      grid-row: 1;
+      align-self: end;
+      color: var(--bg);
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 600;
+      letter-spacing: -0.005em;
+      font-size: clamp(26px, 3.8vw, 34px);
+      line-height: 1.35;
       border-left: 2px solid var(--gold);
-      padding: 6px 0 6px 18px;
-      max-width: 420px;
-      grid-column: 1 / -1;
-      margin-top: 8px;
+      padding: 10px 0 10px 22px;
+      max-width: 480px;
+      margin-bottom: 70px;
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity 0.7s ease-out, transform 0.7s ease-out;
     }
     .contact-success[hidden] { display: none; }
+    .contact-success.show { opacity: 1; transform: translateY(0); }
 
     @media (max-width: 820px) {
       .contact-wrap { grid-template-columns: 1fr; gap: 44px; }
+      .contact-success {
+        grid-column: 1;
+        grid-row: auto;
+        align-self: start;
+        margin-bottom: 0;
+      }
     }
 
     /* ---------- Footer ---------- */
@@ -513,8 +530,17 @@
           body: body.toString()
         }).then(function (r) {
           if (!r.ok) throw new Error("net");
-          form.hidden = true;
-          if (success) success.hidden = false;
+          form.reset();
+          if (success) {
+            success.classList.remove("show");
+            success.hidden = false;
+            // double rAF so the browser registers the hidden->visible state before transition
+            requestAnimationFrame(function () {
+              requestAnimationFrame(function () {
+                success.classList.add("show");
+              });
+            });
+          }
         }).catch(function () {
           alert("Sorry, the form didn't send. Email info@vane-labs.com directly.");
         });
