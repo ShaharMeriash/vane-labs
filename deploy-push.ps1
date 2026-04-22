@@ -1,6 +1,16 @@
 # Vane Labs - cleanup + push
 # Removes old files, commits new site, pushes to GitHub.
 # Netlify auto-rebuilds on push.
+#
+# Usage:
+#   .\deploy-push.ps1                                 (prompts for commit message)
+#   .\deploy-push.ps1 -Message "Fix contact form"
+#   .\deploy-push.ps1 "Fix contact form"              (positional)
+
+param(
+  [Parameter(Position = 0)]
+  [string]$Message = ""
+)
 
 $ErrorActionPreference = "Stop"
 
@@ -55,9 +65,20 @@ if ([string]::IsNullOrWhiteSpace($staged)) {
 }
 
 Write-Host ""
-Write-Host "Committing ..." -ForegroundColor Cyan
-$CommitMsg = "Replace site with new one-pager (We copy, 3 services, 3 principles, embedded logo)"
-git commit -m $CommitMsg
+if ([string]::IsNullOrWhiteSpace($Message)) {
+  Write-Host "Changes to commit:" -ForegroundColor Cyan
+  git diff --cached --stat
+  Write-Host ""
+  $Message = Read-Host "Commit message"
+  if ([string]::IsNullOrWhiteSpace($Message)) {
+    Write-Host "ERROR: commit message cannot be empty." -ForegroundColor Red
+    exit 1
+  }
+}
+
+Write-Host ""
+Write-Host "Committing: $Message" -ForegroundColor Cyan
+git commit -m $Message
 if ($LASTEXITCODE -ne 0) {
   Write-Host "ERROR: commit failed." -ForegroundColor Red
   exit 1
