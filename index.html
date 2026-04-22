@@ -228,7 +228,8 @@
       gap: 72px;
       align-items: start;
     }
-    .contact-intro { max-width: 460px; }
+    .contact-intro { max-width: 460px; grid-column: 1; grid-row: 1; }
+    .contact-form { grid-column: 2; grid-row: 1; }
     .contact-title {
       font-family: 'Rajdhani', sans-serif; font-weight: 600;
       font-size: clamp(32px, 4.5vw, 48px);
@@ -310,6 +311,8 @@
 
     @media (max-width: 820px) {
       .contact-wrap { grid-template-columns: 1fr; gap: 44px; }
+      .contact-intro { grid-column: 1; grid-row: auto; }
+      .contact-form  { grid-column: 1; grid-row: auto; }
       .contact-success {
         grid-column: 1;
         grid-row: auto;
