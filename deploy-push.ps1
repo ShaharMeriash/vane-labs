@@ -36,6 +36,7 @@ $toDelete = @(
   "demo-light.html",
   "demo-v1.html",
   "demo-v2.html",
+  "demo-suggested-copy.html",
   "dewhite.py",
   "logo.png",
   "logo-horizontal.png",
