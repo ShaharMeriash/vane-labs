@@ -4,6 +4,26 @@
 [build]
   publish = "."
 
+# sellers.json — PROXIED to the identity host, deliberately NOT copied here.
+#
+# The authoritative file is generated from config/entity.json on the Relay box
+# and served at relay.vane-labs.com (the `asi` in every supply chain we send,
+# which is where the IAB spec says a buyer must look). But our seller entry
+# declares domain "vane-labs.com", so vetting pipelines and humans come HERE
+# first — and until now got a 404, which is why a DSP had to email and ask for
+# the URL.
+#
+# A static copy would answer that, then silently rot the first time the seller
+# identity changes (per-partner seller_ids are the next likely change). A proxy
+# has exactly one source of truth and cannot drift. The cost is a dependency on
+# the Relay box being up — acceptable, since if it is down there is no traffic
+# for anyone to verify.
+[[redirects]]
+  from = "/sellers.json"
+  to = "https://relay.vane-labs.com/sellers.json"
+  status = 200
+  force = true
+
 # Security + caching headers
 [[headers]]
   for = "/*"
